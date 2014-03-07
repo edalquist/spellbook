@@ -5,7 +5,7 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $http) {
 		level: 1
 	};
 
-	$http.get('/data/classes.json').success(function(classes) {
+	$http.get('data/classes.json').success(function(classes) {
 		$scope.classes = classes;
 		$scope.class = classes[0];
 
