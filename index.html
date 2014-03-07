@@ -1,0 +1,43 @@
+<!doctype html>
+
+<html lang="en" ng-app="spellBookApp">
+<head>
+  <meta charset="utf-8">
+
+  <title>Spell Book</title>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.12/angular.js"></script>
+  <script src="spellbook.js"></script>
+
+</head>
+
+<body ng-controller="SpellBookCtrl">
+	<div>
+		<label for="class_select">Race</label>
+		<select name="class_select" 
+			ng-model="class"
+			ng-change="selectClass()"
+			ng-options="class.name for class in classes"></select>
+
+		<span ng-if="class.specName">
+			<label for="level_spec">{{class.specName}}</label>
+			<select name="level_spec"
+				ng-model="classSpec"
+				on-change="selectClassSpec()"
+				ng-options="spec.name for spec in class.specs"></select>
+		</span>
+
+		<label for="level_select">Level</label>
+		<select name="level_select" ng-model="userData.level" ng-options="level for level in range(1, 20)"></select>
+	</div>
+
+<!--
+	<ol>
+		<li ng-repeat="history in histories">
+			<b>{{history.category}}</b> - 
+			<select name="race_select" ng-model="history.selected" ng-options="history.options.indexOf(opt) as opt.name for opt in history.options"></select>
+		</li>
+	</ol>
+-->
+</body>
+
+</html>

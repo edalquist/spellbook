@@ -1,0 +1,8 @@
+[
+	{"id":1, "name":"Bard", "specName":"College", "specs":[{"id":1, "name":"Valor"}, {"id":2, "name":"Wit"}]},
+	{"id":2, "name":"Cleric", "specName":"Domain", "specs":[{"id":1, "name":"Life"}, {"id":2, "name":"Light"}, {"id":3, "name":"War"}]},
+	{"id":3, "name":"Druid"},
+	{"id":4, "name":"Mage"},
+	{"id":5, "name":"Paladin"},
+	{"id":6, "name":"Ranger"}
+]
