@@ -1,0 +1,20 @@
+[
+	{
+		"name":"Aid",
+		"level":2,
+		"type":"abjuration",
+		"time":"1 action",
+		"range":"25 feet",
+		"duration":"8 hours",
+		"description":"Your prayer calls down a divine blessing of toughness and resolve. Choose up to three creatures within range that are not currently affected by this spell. Each target’s hit point maximum and current hit points increase by 5 for the duration. This spell has no effect upon undead or constructs."
+	},
+	{
+		"name":"",
+		"level":,
+		"type":"",
+		"time":" action",
+		"range":" feet",
+		"duration":" hours",
+		"description":""
+	}
+]

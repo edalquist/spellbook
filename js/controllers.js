@@ -21,7 +21,7 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $location, $http) {
 		$location.url($location.path());
 
 		$location.search('cid', $scope.selectedClass.id);
-		if ($scope.selectedClass.specs) {
+		if ($scope.selectedClass.specs && $scope.selectedSpec) {
 			$location.search('sid', $scope.selectedSpec.id);
 		}
 		$location.search('l', $scope.selectedLevel);
