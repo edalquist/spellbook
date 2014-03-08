@@ -19,18 +19,19 @@
 			ng-change="saveState()"
 			ng-options="selectedClass.name for selectedClass in classes"></select>
 
-		<span ng-if="selectedClass.specName">
+		<span ng-show="selectedClass.specName">
 			<label for="level_spec">{{selectedClass.specName}}</label>
 			<select name="level_spec"
-				ng-model="classSpec"
+				ng-model="selectedSpec"
 				ng-change="saveState()"
-				ng-options="spec.name for spec in selectedClass.specs"></select>
+				ng-options="selectedSpec.name for selectedSpec in selectedClass.specs"></select>
 		</span>
 
 		<label for="level_select">Level</label>
 		<select name="level_select"
-			ng-model="userData.level"
-			ng-options="level for level in range(1, 20)"></select>
+			ng-model="selectedLevel"
+			ng-change="saveState()"
+			ng-options="selectedLevel for selectedLevel in range(1, 20)"></select>
 	</div>
 
 <!--
