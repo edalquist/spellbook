@@ -30,10 +30,10 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $location, $http) {
     $scope.loadState = function() {
     	var savedState = $location.search();
 	    $scope.selectedClass = $scope.findEntity(savedState.cid, $scope.classes);
-	    if ($scope.selectedClass.specs) {
+	    if ($scope.selectedClass && $scope.selectedClass.specs) {
 	    	$scope.selectedSpec = $scope.findEntity(savedState.sid, $scope.selectedClass.specs);
 	    }
-	    $scope.selectedLevel = savedState.l;
+	    $scope.selectedLevel = Number(savedState.l);
     };
 
     $scope.$on('$locationChangeSuccess', $scope.loadState);

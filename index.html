@@ -34,14 +34,11 @@
 			ng-options="selectedLevel for selectedLevel in range(1, 20)"></select>
 	</div>
 
-<!--
-	<ol>
-		<li ng-repeat="history in histories">
-			<b>{{history.category}}</b> - 
-			<select name="race_select" ng-model="history.selected" ng-options="history.options.indexOf(opt) as opt.name for opt in history.options"></select>
-		</li>
-	</ol>
--->
+	<div ng-repeat="level in range(1, selectedLevel)">
+		<h3>Level {{level}} Prepared Spells</h3>
+		<ul>
+		</ul>
+	</div>
 </body>
 
 </html>
