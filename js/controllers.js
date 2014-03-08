@@ -22,9 +22,10 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $location, $http) {
 
 		if ($scope.selectedClass) {
 			$location.search('cid', $scope.selectedClass.id);
-		}
-		if ($scope.selectedClass.specs && $scope.selectedSpec) {
-			$location.search('sid', $scope.selectedSpec.id);
+
+			if ($scope.selectedClass.specs && $scope.selectedSpec) {
+				$location.search('sid', $scope.selectedSpec.id);
+			}
 		}
 		if ($scope.selectedLevel) {
 			$location.search('l', $scope.selectedLevel);
@@ -32,6 +33,7 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $location, $http) {
     };
 
     $scope.loadState = function() {
+    	// TODO clear state before loading
     	var savedState = $location.search();
     	if (savedState.cid) {
 	    	$scope.selectedClass = $scope.findEntity(savedState.cid, $scope.classes);
