@@ -20,20 +20,28 @@ spellBookApp.controller('SpellBookCtrl', function ($scope, $location, $http) {
 		// Clears all parameters first
 		$location.url($location.path());
 
-		$location.search('cid', $scope.selectedClass.id);
+		if ($scope.selectedClass) {
+			$location.search('cid', $scope.selectedClass.id);
+		}
 		if ($scope.selectedClass.specs && $scope.selectedSpec) {
 			$location.search('sid', $scope.selectedSpec.id);
 		}
-		$location.search('l', $scope.selectedLevel);
+		if ($scope.selectedLevel) {
+			$location.search('l', $scope.selectedLevel);
+		}
     };
 
     $scope.loadState = function() {
     	var savedState = $location.search();
-	    $scope.selectedClass = $scope.findEntity(savedState.cid, $scope.classes);
-	    if ($scope.selectedClass && $scope.selectedClass.specs) {
+    	if (savedState.cid) {
+	    	$scope.selectedClass = $scope.findEntity(savedState.cid, $scope.classes);
+	    }
+	    if (savedState.sid && $scope.selectedClass && $scope.selectedClass.specs) {
 	    	$scope.selectedSpec = $scope.findEntity(savedState.sid, $scope.selectedClass.specs);
 	    }
-	    $scope.selectedLevel = Number(savedState.l);
+	    if (savedState.l) {
+	    	$scope.selectedLevel = Number(savedState.l);
+	    }
     };
 
     $scope.$on('$locationChangeSuccess', $scope.loadState);
