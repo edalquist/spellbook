@@ -120,6 +120,7 @@ for (def page in htmlNode.body.children()) {
           break;
         // Spell Name
         case "cls_002":
+        case "cls_006":
           currentClass.spells[spellLevel] << line.text().trim();
           break;
       }
@@ -160,6 +161,7 @@ for (def page in htmlNode.body.children()) {
                 currentSpell.duration = line.children()[1].text().trim();
                 break;
               default:
+                // TODO This is generally a list item
                 currentSpell.description += line.text().trim() + " ";
                 break;
             }
