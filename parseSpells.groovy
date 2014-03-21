@@ -36,100 +36,142 @@ class Spell { String name; Integer level; String school; String time; String ran
 
 SpellBook data = new SpellBook();
 
-
 ParseStep currentStep = null;
 Class currentClass = null;
 Spell currentSpell = null;
 Integer spellLevel = null;
-for (def line in htmlNode.body.div.children()) {
-  // Switch parse step as appropriate
-  switch (line['@class']) {
-    case "cls_003":
-      currentStep = ParseStep.CLASS_SPELLS;
-      currentClass = null;
-      currentSpell = null
-      spellLevel = null;
-      break;
-    case "cls_009":
-      currentStep = ParseStep.SPELL_DETAILS;
-      currentClass = null;
-      currentSpell = null
-      spellLevel = null;
-      break;
+for (def page in htmlNode.body.children()) {
+  if (!page.name() == "div") {
+    continue;
   }
 
-  if (currentStep == ParseStep.CLASS_SPELLS) {
+  // Sort the lines on the page by position
+  def lines = page.children().list().sort({ a, b ->
+    if (a == b) {
+      return 0;
+    } else if (a == null) {
+      return -1;
+    } else if (b == null) {
+      return 1;
+    }
+
+    def sortPattern = /position:absolute;left:(\d*\.\d)*px;top:(\d*\.\d*)px/;
+    def matchA = (a['@style'] =~ sortPattern);
+    def matchB = (b['@style'] =~ sortPattern);
+
+    if (matchA.matches() && matchB.matches()) {
+      if (matchA[0][1] == matchB[0][1]) {
+        if (matchA[0][2] == matchB[0][2]) {
+          return 0;
+        } else if (matchA[0][2] < matchB[0][2]) {
+          return -1;
+        } else {
+          return 1;
+        }
+      } else if (matchA[0][1] < matchB[0][1]) {
+        return -1;
+      } else {
+        return 1;
+      }
+    } else if (matchA.matches()) {
+      return -1;
+    } else if (matchB.matches()) {
+      return 1;
+    }
+
+    return 0;
+  });
+
+  for (def line in lines) {
+    // Switch parse step as appropriate
     switch (line['@class']) {
-      // New Class
-      case "cls_004":
-        currentClass = new Class(name: line.text().trim());
-        data.classes << currentClass;
+      case "cls_003":
+        currentStep = ParseStep.CLASS_SPELLS;
+        currentClass = null;
+        currentSpell = null
         spellLevel = null;
         break;
-      // Spell Levels
-      case "cls_005":
-        if (line.text() == "Cantrips") {
-          spellLevel = 0;
-        } else {
-          def levelMatcher = (line.text() =~ /Level (\d+) Spells/);
-          spellLevel = levelMatcher[0][1].toInteger();
-        }
-        
-        currentClass.spells[spellLevel] = [];
-        break;
-      // Spell Name
-      case "cls_002":
-        currentClass.spells[spellLevel] << line.text().trim();
+      case "cls_009":
+        currentStep = ParseStep.SPELL_DETAILS;
+        currentClass = null;
+        currentSpell = null
+        spellLevel = null;
         break;
     }
-  } else if (currentStep == ParseStep.SPELL_DETAILS) {
-    switch (line['@class']) {
-      // New Spell
-      case "cls_011":
-        currentSpell = new Spell(name: line.text().trim());
-        data.spells << currentSpell;
-        break;
 
-      // Most of these are spell meta-data, some however are part of spell description data
-      case "cls_012":
-      case "cls_013":
-        def lineMatcher;
-        // 1 child content is the level and school
-        if (line.children().size() == 1) {
-          if ((lineMatcher = (line.text() =~ /(\d)..-level (.*)/)).matches()) {
-            currentSpell.level = lineMatcher[0][1].toInteger();
-            currentSpell.school = lineMatcher[0][2];
-          } else if ((lineMatcher = (line.text() =~ /(.*) cantrip/)).matches() || (lineMatcher = (line.text() =~ /Cantrip (.*)/)).matches()) {
-            currentSpell.level = 0;
-            currentSpell.school = lineMatcher[0][1];
+    if (currentStep == ParseStep.CLASS_SPELLS) {
+      switch (line['@class']) {
+        // New Class
+        case "cls_004":
+          currentClass = new Class(name: line.text().trim());
+          data.classes << currentClass;
+          spellLevel = null;
+          break;
+        // Spell Levels
+        case "cls_005":
+          if (line.text() == "Cantrips") {
+            spellLevel = 0;
           } else {
-            println "BROKEN_" + line.children().size() + " >> " + line.text();
+            def levelMatcher = (line.text() =~ /Level (\d+) Spells/);
+            spellLevel = levelMatcher[0][1].toInteger();
           }
-        // Most 2 child are meta-data
-        } else if (line.children().size() == 2) {
-          def heading = line.children()[0].text().trim();
-          switch (heading) {
-            case "Casting Time:":
-              currentSpell.time = line.children()[1].text().trim();
-              break;
-            case "Range:":
-              currentSpell.range = line.children()[1].text().trim();
-              break;
-            case "Duration:":
-              currentSpell.duration = line.children()[1].text().trim();
-              break;
-            default:
-              currentSpell.description += line.text().trim() + " ";
-              break;
+          
+          currentClass.spells[spellLevel] = [];
+          break;
+        // Spell Name
+        case "cls_002":
+          currentClass.spells[spellLevel] << line.text().trim();
+          break;
+      }
+    } else if (currentStep == ParseStep.SPELL_DETAILS) {
+      switch (line['@class']) {
+        // New Spell
+        case "cls_011":
+          currentSpell = new Spell(name: line.text().trim());
+          data.spells << currentSpell;
+          break;
+
+        // Most of these are spell meta-data, some however are part of spell description data
+        case "cls_012":
+        case "cls_013":
+          def lineMatcher;
+          // 1 child content is the level and school
+          if (line.children().size() == 1) {
+            if ((lineMatcher = (line.text() =~ /(\d)..-level (.*)/)).matches()) {
+              currentSpell.level = lineMatcher[0][1].toInteger();
+              currentSpell.school = lineMatcher[0][2];
+            } else if ((lineMatcher = (line.text() =~ /(.*) cantrip/)).matches() || (lineMatcher = (line.text() =~ /Cantrip (.*)/)).matches()) {
+              currentSpell.level = 0;
+              currentSpell.school = lineMatcher[0][1];
+            } else {
+              println "BROKEN_" + line.children().size() + " >> " + line.text();
+            }
+          // Most 2 child are meta-data
+          } else if (line.children().size() == 2) {
+            def heading = line.children()[0].text().trim();
+            switch (heading) {
+              case "Casting Time:":
+                currentSpell.time = line.children()[1].text().trim();
+                break;
+              case "Range:":
+                currentSpell.range = line.children()[1].text().trim();
+                break;
+              case "Duration:":
+                currentSpell.duration = line.children()[1].text().trim();
+                break;
+              default:
+                currentSpell.description += line.text().trim() + " ";
+                break;
+            }
+          // These are description data
+          } else {
+            currentSpell.description += line.text().trim() + " ";
           }
-        // These are description data
-        } else {
+          break;
+        case "cls_010":
           currentSpell.description += line.text().trim() + " ";
-        }
-        break;
-      case "cls_010":
-        currentSpell.description += line.text().trim() + " ";
-        break;
+          break;
+      }
     }
   }
 }
