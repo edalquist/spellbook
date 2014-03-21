@@ -1,61 +1,77 @@
 [
 	{
-		"id":1, "name":"Bard", 
-		"specName":"College", "specs":[{"id":1, "name":"Valor"}, {"id":2, "name":"Wit"}],
-		"cantrips":["Dancing Lights","Light","Mage Hand","Mending","Message","Minor Illusion","Prestidigitation","Read Magic"],
-		"spells":[
-			["Animal Friendship","Cause Fear","Charm Person","Comprehend Languages","Cure Wounds","Detect Magic","Disguise Self","Faerie Fire","Feather Fall","Healing Word","Identify","Longstrider","Sleep","Speak with Animals","Thunderwave"],
-			["Animal Messenger","Heat Metal","Hold Person","Invisibility","Knock","Lesser Restoration","Locate Animals or Plants","Phantasmal Force","Silence","Sound Burst","Suggestion","Zone of Truth"],
-			["Aura of Invisibility","Dispel Magic","Plant Growth","Speak with Dead","Stinking Cloud"],
-			["Confusion","Dimension Door","Freedom of Movement","Polymorph"],
-			["Awaken","Dominate Person","Feeblemind","Hold Monster","Mass Cure Wounds","Raise Dead","Scrying","Seeming","Teleportation Circle","True Seeing"]
+		"name": "Bard", 
+		"specName": "College",
+		"specs": [
+			{
+				"name":"Valor"
+			},
+			{
+				"name":"Wit"
+			}
 		]
 	},
 	{
-		"id":2, "name":"Cleric", 
-		"specName":"Domain", "specs":[
-			{"id":1, "name":"Life"}, 
-			{"id":2, "name":"Light", "spells": [
-				["burning hands", "faerie fire"],
-				[],
-				["flaming sphere", "scorching ray"],
-				[],
-				["daylight", "fireball"],
-				[],
-				["guardian of faith", "wall of fire"],
-				[],
-				["flame strike", "true seeing"],
-				[],
-				["sunbeam"],
-				[],
-				[],
-				[],
-				["sunburst"]
-			]}, 
-			{"id":3, "name":"War"}],
-		"cantrips":["Guidance","Light","Resistance","Sacred Flame","Spare the Dying","Thaumaturgy"],
-		"spells":[
-			["Bless","Cause Fear","Command","Create or Destroy Water","Cure Wounds","Detect Good and Evil","Detect Magic","Detect Poison and Disease","Healing Word","Inflict Wounds","Protection from Evil","Purify Food and Drink","Sanctuary","Shield of Faith"],
-			["Aid","Augury","Gentle Repose","Hold Person","Lesser Restoration","Prayer of Healing","Protection from Poison","Silence","Spiritual Weapon","Zone of Truth"],
-			["Animate Dead","Beacon of Hope","Create Food and Water","Daylight","Dispel Magic","Holy Vigor","Mass Healing Word","Prayer","Protection from Energy","Remove Curse","Speak with Dead","Water Walk"],
-			["Air Walk","Death Ward","Divination","Freedom of Movement","Guardian of Faith"],
-			["Commune","Flame Strike","Insect Plague","Mass Cure Wounds","Raise Dead","Scrying","True Seeing"],
-			["Banishment","Blade Barrier","Greater Dispel Magic","Harm","Heal","Planar Ally"],
-			["Destruction","Greater Restoration","Fire Storm","Holy Word","Plane Shift","Regenerate","Resurrection"],
-			["Antimagic Field","Earthquake","Holy Aura"],
-			["Astral Projection","Gate","Mass Heal","True Resurrection"]
+		"name":" Cleric", 
+		"specName": "Domain",
+		"specs":[
+			{
+				"name": "Life"
+			}, 
+			{
+				"name": "Light", 
+				"spells": [
+					[
+						"Burning Hands",
+						"Faerie Fire"
+					],
+					null,
+					[
+						"Flaming Sphere",
+						"Scorching Ray"
+					],
+					null,
+					[
+						"Daylight",
+						"Fireball"
+					],
+					null,
+					[
+						"Guardian of Faith",
+						"Wall of Fire"
+					],
+					null,
+					[
+						"Flame Strike",
+						"True Seeing"
+					],
+					null,
+					[
+						"Sunbeam"
+					],
+					null,
+					null,
+					null,
+					[
+						"Sunburst"
+					]
+				]
+			}, 
+			{
+				"name": "War"
+			}
 		]
 	},
 	{
-		"id":3, "name":"Druid"
+		"name": "Druid"
 	},
 	{
-		"id":4, "name":"Mage"
+		"name": "Mage"
 	},
 	{
-		"id":5, "name":"Paladin"
+		"name": "Paladin"
 	},
 	{
-		"id":6, "name":"Ranger"
+		"name": "Ranger"
 	}
 ]
