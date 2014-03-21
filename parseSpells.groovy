@@ -31,7 +31,7 @@ enum ParseStep { CLASS_SPELLS, SPELL_DETAILS }
 
 class SpellBook { List classes = []; List spells = []; }
 class Class { String name; List spells = []; }
-class Spell { String name; Integer level; String school; String time; String range; String duration; }
+class Spell { String name; Integer level; String school; String time; String range; String duration; String description = ""; }
 
 
 SpellBook data = new SpellBook();
@@ -89,9 +89,12 @@ for (def line in htmlNode.body.div.children()) {
         currentSpell = new Spell(name: line.text().trim());
         data.spells << currentSpell;
         break;
+
+      // Most of these are spell meta-data, some however are part of spell description data
       case "cls_012":
       case "cls_013":
         def lineMatcher;
+        // 1 child content is the level and school
         if (line.children().size() == 1) {
           if ((lineMatcher = (line.text() =~ /(\d)..-level (.*)/)).matches()) {
             currentSpell.level = lineMatcher[0][1].toInteger();
@@ -102,6 +105,7 @@ for (def line in htmlNode.body.div.children()) {
           } else {
             println "BROKEN_" + line.children().size() + " >> " + line.text();
           }
+        // Most 2 child are meta-data
         } else if (line.children().size() == 2) {
           def heading = line.children()[0].text().trim();
           switch (heading) {
@@ -114,10 +118,17 @@ for (def line in htmlNode.body.div.children()) {
             case "Duration:":
               currentSpell.duration = line.children()[1].text().trim();
               break;
+            default:
+              currentSpell.description += line.text().trim() + " ";
+              break;
           }
+        // These are description data
         } else {
-          println "BROKEN_" + line.children().size() + " >> " + line.text();
+          currentSpell.description += line.text().trim() + " ";
         }
+        break;
+      case "cls_010":
+        currentSpell.description += line.text().trim() + " ";
         break;
     }
   }
