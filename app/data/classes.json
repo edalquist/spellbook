@@ -14,7 +14,7 @@
 		}
 	},
 	{
-		"name":" Cleric",
+		"name":"Cleric",
 		"spec": {
 			"name": "Domain",
 			"types": [
