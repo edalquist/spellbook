@@ -1,0 +1,18 @@
+body {
+  padding-top: 50px;
+}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+.character-select, .character-select a, .character-select:hover {
+    color: #999;
+}
+.character-select .dropdown {
+    list-style: none;
+    display: inline;
+}
+.level .spell-list li .form-control {
+    display: inline;
+}
+.level .panel-title .accordion-toggle {
+    display: block;
+}

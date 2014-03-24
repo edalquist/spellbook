@@ -15,7 +15,7 @@ if (!extraArguments) {
 
 def spellsFile = new File(extraArguments[0]);
 if (!spellsFile.exists()) {
-  println "'" + spellsFile + "' does not exist"; 
+  println "'" + spellsFile + "' does not exist";
   cli.usage();
   System.exit(-1);
 }
@@ -103,19 +103,22 @@ for (def page in htmlNode.body.children()) {
       switch (line['@class']) {
         // New Class
         case "cls_004":
-          currentClass = new Class(name: line.text().trim());
+        case "cls_008":
+          def classMatcher = (line.text() =~ /(.*) Spells/);
+          currentClass = new Class(name: classMatcher[0][1].trim());
           data.classes << currentClass;
           spellLevel = null;
           break;
         // Spell Levels
         case "cls_005":
+        case "cls_007":
           if (line.text() == "Cantrips") {
             spellLevel = 0;
           } else {
             def levelMatcher = (line.text() =~ /Level (\d+) Spells/);
             spellLevel = levelMatcher[0][1].toInteger();
           }
-          
+
           currentClass.spells[spellLevel] = [];
           break;
         // Spell Name
