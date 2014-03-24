@@ -5,9 +5,14 @@ module.exports = function(config){
     files : [
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
-      'test/lib/angular/angular-mocks.js',
+      'test/lib/*/*.js',
       'app/js/**/*.js',
-      'test/unit/**/*.js'
+      'test/unit/**/*.js',
+      { pattern: 'app/data/*.json',
+          watched: true,
+          served:  true,
+          included: false
+      }
     ],
 
     exclude : [
@@ -23,11 +28,11 @@ module.exports = function(config){
     browsers : ['Chrome'],
 
     plugins : [
-            'karma-junit-reporter',
-            'karma-chrome-launcher',
-            'karma-firefox-launcher',
-            'karma-jasmine'
-            ],
+      'karma-junit-reporter',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-jasmine'
+    ],
 
     junitReporter : {
       outputFile: 'test_out/unit.xml',
