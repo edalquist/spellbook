@@ -5,6 +5,8 @@ module.exports = function(config){
     files : [
       'app/lib/angular/angular.js',
       'app/lib/angular/angular-*.js',
+      'app/lib/bootstrap-custom/ui-bootstrap-custom-0.10.0.js',
+      'app/lib/bootstrap-custom/ui-bootstrap-custom-tpls-0.10.0.js',
       'test/lib/*/*.js',
       'app/js/**/*.js',
       'test/unit/**/*.js',

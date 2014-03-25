@@ -44,15 +44,13 @@ describe('types', function() {
     expect(specialization.name).toEqual('Domain');
     expect(specialization.getTypes()).toEqual([ 'Life', 'Light', 'War' ]);
 
+    // Testing SpecializationType
     var lightSpec = specialization.getType('Light');
     expect(lightSpec).toBeDefined();
     expect(lightSpec.name).toEqual('Light');
     expect(lightSpec.getSpellNames(1)).toEqual([ 'Burning Hands', 'Faerie Fire' ]);
 
   });
-
-  //Specialization
-  //SpecializationType
 
   var classSpecData = {
     "name":"Cleric",
