@@ -69,6 +69,70 @@
 	},
 	{
 		"name": "Druid"
+		"spec": {
+			"name": "Circle",
+			"types": [
+				{
+					"name": "Circle of the Land",
+					"types": [
+						{
+							"name": "Land"
+							"types":[
+								{
+									"name": "Coast"
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Mirror Image"
+										],
+										null,
+										[
+											"Water Breathing",
+											"Water Walk"
+										],
+										null,
+										[
+											"Freedom of Movement",
+											"Solid Fog"
+										],
+										null,
+										[
+											"Scrying",
+											"True Seeing"
+										]
+									]
+								},
+								{
+									"name": "Desert"
+								},
+								{
+									"name": "Forest"
+								},
+								{
+									"name": "Grassland"
+								},
+								{
+									"name": "Mountain"
+								},
+								{
+									"name": "Swamp"
+								},
+																{
+									"name": "Tundra"
+								}
+							]
+						}
+						
+					]
+				},
+				{
+					"name":" Circle of the Moon"
+				}
+			]
+		}
+	},
 	},
 	{
 		"name": "Mage"
