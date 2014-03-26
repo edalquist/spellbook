@@ -63,7 +63,7 @@
 			"name": "Domain",
 			"types": [
 				{
-					"name": "Life"
+					"name": "Life",
 					"spells": [
 						[
 							"Bless",
@@ -131,7 +131,7 @@
 					]
 				},
 				{
-					"name": "War"
+					"name": "War",
 					"spells": [
 						[
 							"Divine Favor",
@@ -196,7 +196,7 @@
 							"name": "Land",
 							"types":[
 								{
-									"name": "Coast"
+									"name": "Coast",
 									"spells": [
 										null,
 										null,
