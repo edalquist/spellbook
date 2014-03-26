@@ -127,7 +127,7 @@
 					"name": "Circle of the Land",
 					"types": [
 						{
-							"name": "Land"
+							"name": "Land",
 							"types":[
 								{
 									"name": "Coast"
