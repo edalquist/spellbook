@@ -36,32 +36,32 @@
           <span class="navbar-brand character-select">
             <span>Level </span>
             <li class="dropdown">
-              <a class="dropdown-toggle">{{ character.level || "select" }}</a>
+              <a class="dropdown-toggle">{{ model.level || "select" }}</a>
               <ul class="dropdown-menu">
                 <li ng-repeat="level in range(1, 20)">
-                  <a ng-click="selectLevel(level)">{{ level }}</a>
+                  <a ng-click="model.selectLevel(level)">{{ level }}</a>
                 </li>
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle">{{ character.className }}</a>
+              <a class="dropdown-toggle">{{ model.characterClass.name }}</a>
               <ul class="dropdown-menu">
                 <li ng-repeat="className in classNames">
-                  <a ng-click="selectClass(className)">{{ className }}</a>
+                  <a ng-click="model.selectClass(className)">{{ className }}</a>
                 </li>
               </ul>
             </li>
-            <span ng-show="character.cls.spec">
+            <span ng-show="model.characterClass.specialization">
               <span> of the </span>
               <li class="dropdown">
-                <a class="dropdown-toggle">{{ character.spec.name || "select" }}</a>
+                <a class="dropdown-toggle">{{ model.specializationType.name || "select" }}</a>
                 <ul class="dropdown-menu">
-                  <li ng-repeat="spec in character.cls.spec.types">
-                    <a ng-click="selectSpec(spec)">{{ spec.name }}</a>
+                  <li ng-repeat="specTypeName in model.characterClass.specialization.getTypes()">
+                    <a ng-click="model.selectSpecializationType(specTypeName)">{{ specTypeName }}</a>
                   </li>
                 </ul>
               </li>
-              <span> {{ character.cls.spec.name }}</span>
+              <span> {{ model.characterClass.specialization.name }}</span>
             </span>
           </span>
         </div>
@@ -70,21 +70,21 @@
 
     <div class="container">
       <accordion close-others="{{ false }}">
-        <accordion-group heading="Level {{level}} Spells" ng-repeat="level in range(1, character.level)" is-open="{{ true }}" class="level">
+        <accordion-group heading="Level {{level}} Spells" ng-repeat="level in range(1, model.level)" is-open="{{ true }}" class="level">
           <ul class="spell-list">
-            <li ng-show="character.spec.spells[level - 1].length > 0">{{ character.spec.name }} {{ character.cls.spec.name }} Spells
+            <li ng-show="model.specializationType.getSpellNames(level).length > 0">{{ model.specializationType.name }} {{ model.characterClass.specialization.name }} Spells
               <ul>
-                <li ng-repeat="spellName in character.spec.spells[level - 1]">{{ spellName }}</li>
+                <li ng-repeat="spellName in model.specializationType.getSpellNames(level)">{{ spellName }}</li>
               </ul>
             </li>
-            <li ng-repeat="spellName in character.spells[level - 1]">{{ spellName }}</li>
+            <li ng-repeat="spellName in model.spells[level - 1]">{{ spellName }} <a ng-click="model.deleteSpell(level, spellName)" href="#">-</a></li>
             <li>
-              <!-- ng-model="character.spells[level - 1][character.spells[level - 1].length]" -->
-              <!-- <pre>{{ classSpells | filter:{name:character.cls.name} | json }}</pre> -->
               <input type="text"
                 ng-model="spellSelectors[level - 1]"
+                typeahead-min-length="0"
+                typeahead-editable="false"
                 typeahead-on-select="spellSelected(level)"
-                typeahead="spell for spell in findEntity('name', character.cls.name, classSpells).spells[level] | filter:$viewValue | limitTo:8" class="form-control">
+                typeahead="spell for spell in model.characterClass.getSpellNames(level) | excludes:model.spells[level - 1] | filter:$viewValue | limitTo:20" class="form-control">
             </li>
           </ul>
         </accordion-group>

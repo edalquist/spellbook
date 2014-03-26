@@ -8,8 +8,6 @@ describe('service', function() {
   beforeEach(module('spellBookApp'));
 
   beforeEach(inject(function($httpBackend, _spellBookService_) {
-    //jasmine.addCustomEqualityTester();
-
     httpBackend = $httpBackend;
     spellBookService = _spellBookService_
 
