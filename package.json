@@ -1,0 +1,13 @@
+{
+  "name": "spellbook",
+  "description": "A Spellbook",
+  "repository": "https://github.com/edalquist/spellbook",
+  "devDependencies": {
+    "phantomjs" : "~1.9",
+    "karma" : "~0.12.1",
+    "karma-junit-reporter" : "~0.2.1",
+    "karma-jasmine": "~0.2.1",
+    "protractor" : "~0.20.1",
+    "jasmine-jquery" : "~1.3.3"
+  }
+}

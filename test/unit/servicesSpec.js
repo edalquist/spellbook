@@ -3,13 +3,20 @@
 /* jasmine specs for services go here */
 
 describe('service', function() {
-  var httpBackend, spellBookService;
+  var httpBackend, spellBookService, classesData, spellsData;
 
   beforeEach(module('spellBookApp'));
 
   beforeEach(inject(function($httpBackend, _spellBookService_) {
+    //jasmine.addCustomEqualityTester();
+
     httpBackend = $httpBackend;
     spellBookService = _spellBookService_
+
+    jasmine.getJSONFixtures().fixturesPath = 'base/app/data';
+
+    classesData = getJSONFixture('classes.json');
+    spellsData = getJSONFixture('spells.json');
   }));
 
   afterEach(function() {
@@ -17,33 +24,27 @@ describe('service', function() {
     httpBackend.verifyNoOutstandingRequest();
   });
 
-  describe('version', function() {
-    it('should return current version', function() {
-      httpBackend.when('GET', 'data/classes.json').respond(classData);
-      httpBackend.when('GET', 'data/spells.json').respond(spellData);
+  describe('spellBookService', function() {
+    beforeEach(function() {
+      httpBackend.when('GET', 'data/classes.json').respond(classesData);
+      httpBackend.when('GET', 'data/spells.json').respond(spellsData);
       httpBackend.flush();
+    });
 
-      //httpBackend.
-      expect(spellBookService.getClasses()).toEqual('classes');
+    it('getClassNames', function() {
+      spellBookService.getClassNames().then(function(data) {
+        expect(data).toEqual([ 'Bard', 'Cleric', 'Druid', 'Mage', 'Paladin', 'Ranger' ]);
+      });
+    });
+
+    it('getClass', function() {
+      spellBookService.getClass('Bard').then(function(data) {
+        expect(data.name).toEqual('Bard');
+      });
+
+      spellBookService.getClass('InvalidClass').then(function(data) {
+        expect(data).not.toBeDefined();
+      });
     });
   });
-
-  var spellData = {};
-
-  var classData = [
-    {
-      "name": "Bard",
-      "spec": {
-        "name": "College",
-        "types": [
-          {
-            "name":"Valor"
-          },
-          {
-            "name":"Wit"
-          }
-        ]
-      }
-    }
-  ];
 });

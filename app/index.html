@@ -44,10 +44,10 @@
               </ul>
             </li>
             <li class="dropdown">
-              <a class="dropdown-toggle">{{ character.cls.name }}</a>
+              <a class="dropdown-toggle">{{ character.className }}</a>
               <ul class="dropdown-menu">
-                <li ng-repeat="cls in classes">
-                  <a ng-click="selectClass(cls)">{{ cls.name }}</a>
+                <li ng-repeat="className in classNames">
+                  <a ng-click="selectClass(className)">{{ className }}</a>
                 </li>
               </ul>
             </li>
