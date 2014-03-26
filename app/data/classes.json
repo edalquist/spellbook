@@ -222,7 +222,7 @@
 									]
 								},
 								{
-									"name": "Desert
+									"name": "Desert",
 									"spells": [
 										null,
 										null,
@@ -248,7 +248,7 @@
 									]
 								},
 								{
-									"name": "Forest"
+									"name": "Forest",
 									"spells": [
 										null,
 										null,
@@ -274,7 +274,7 @@
 									]
 								},
 								{
-									"name": "Grassland"
+									"name": "Grassland",
 									"spells": [
 										null,
 										null,
@@ -300,7 +300,7 @@
 									]
 								},
 								{
-									"name": "Mountain"
+									"name": "Mountain",
 									"spells": [
 										null,
 										null,
@@ -326,7 +326,7 @@
 									]
 								},
 								{
-									"name": "Swamp"
+									"name": "Swamp",
 									"spells": [
 										null,
 										null,
@@ -352,7 +352,7 @@
 									]
 								},
 																{
-									"name": "Tundra"
+									"name": "Tundra",
 									"spells": [
 										null,
 										null,
