@@ -250,7 +250,6 @@
 			]
 		}
 	},
-	},
 	{
 		"name": "Mage",
 		"spellsPerDay": [
@@ -341,7 +340,7 @@
 					]
 				},
 				{
-					"name": "Vengeance"
+					"name": "Vengeance",
 					"spells": [
 						null,
 						null,
@@ -381,7 +380,7 @@
 		}
 	},
 	{
-		"name": "Ranger"
+		"name": "Ranger",
 		"spellsPerDay": [
 				null,
 				null,
