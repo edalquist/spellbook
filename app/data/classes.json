@@ -5,7 +5,7 @@
 			"name": "College",
 			"types": [
 				{
-					"name":"Valor"
+					"name":"Valor"					
 				},
 				{
 					"name":"Wit"
@@ -20,6 +20,32 @@
 			"types": [
 				{
 					"name": "Life"
+					"spells": [
+						[
+							"Bless",
+							"Cure Wounds"
+						],
+						null,
+						[
+							"Lesser Restoration",
+							"Spiritual Weapon"
+						],
+						null,
+						[
+							"Beacon of Hope",
+							"Prayer"
+						],
+						null,
+						[
+							"Death Ward",
+							"Guardian of Faith"
+						],
+						null,
+						[
+							"Mass Cure Wounds",
+							"Raise Dead"
+						]
+					]
 				},
 				{
 					"name": "Light",
@@ -62,6 +88,32 @@
 				},
 				{
 					"name": "War"
+					"spells": [
+						[
+							"Divine Favor",
+							"Shield of Faith"
+						],
+						null,
+						[
+							"Magic Weapon",
+							"Spiritual Weapon"
+						],
+						null,
+						[
+							"Holy Vigor",
+							"Prayer"
+						],
+						null,
+						[
+							"Divine Power",
+							"Freedome of Movement"
+						],
+						null,
+						[
+							"Flame Strike",
+							"Hold Monster"
+						]
+					]
 				}
 			]
 		}
