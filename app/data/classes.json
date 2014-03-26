@@ -117,7 +117,6 @@
 				}
 			]
 		}
-
 	},
 	{
 		"name": "Druid"
@@ -191,6 +190,85 @@
 	},
 	{
 		"name": "Paladin"
+		{
+			"name": "Oath",
+			"types": [
+				{
+					"name": "Devotion",
+					"spells": [
+						null,
+						null,
+						[
+							"Protection from Evil",
+							"Sanctuary"
+						],
+						null,
+						[
+							"Lesser Restoration",
+							"Zone of Truth"
+						],
+						null,
+						null,
+						null,
+						[
+							"Beacon of Hope",
+							"Dispel Magic"
+						],
+						null,
+						null,
+						null,
+						[
+							"Guardian of Faith",
+							"Freedom of Movement"
+						],
+						null,
+						null,
+						null,
+						[
+							"Flame Strike",
+							"Commune"
+						]
+					]
+				},
+				{
+					"name": "Vengeance"
+					"spells": [
+						null,
+						null,
+						[
+							"Cause Fear",
+							"Hunter's Mark"
+						],
+						null,
+						[
+							"Hold Person",
+							"Misty Step"
+						],
+						null,
+						null,
+						null,
+						[
+							"Haste",
+							"Protection from Energy"
+						],
+						null,
+						null,
+						null,
+						[
+							"Air Walk",
+							"Dimension Door"
+						],
+						null,
+						null,
+						null,
+						[
+							"Hold Monster",
+							"Scrying"
+						]
+					]
+				}
+			]
+		}
 	},
 	{
 		"name": "Ranger"
