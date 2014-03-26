@@ -8,6 +8,9 @@ spellBookApp.config(function($locationProvider) {
 
 spellBookApp.filter('excludes', function() {
     return function(fullArray, excludesArray) {
+        if (!excludesArray) {
+            return fullArray;
+        }
         var result = [];
         angular.forEach(fullArray, function(value) {
             if (excludesArray.indexOf(value) < 0) {
