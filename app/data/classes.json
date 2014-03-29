@@ -1,11 +1,33 @@
 [
 	{
 		"name": "Bard",
+		"spellsPerDay": [
+				null,
+				[2],
+				[3],
+				[3],
+				[4,2],
+				[4,2],
+				[4,3],
+				[4,3],
+				[4,3,2],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2]
+			],
 		"spec": {
 			"name": "College",
 			"types": [
 				{
-					"name":"Valor"
+					"name":"Valor"					
 				},
 				{
 					"name":"Wit"
@@ -15,11 +37,59 @@
 	},
 	{
 		"name":"Cleric",
+		"spellsPerDay": [
+				[2],
+				[3],
+				[4,2],
+				[4,3],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1]
+			],
 		"spec": {
 			"name": "Domain",
 			"types": [
 				{
-					"name": "Life"
+					"name": "Life",
+					"spells": [
+						[
+							"Bless",
+							"Cure Wounds"
+						],
+						null,
+						[
+							"Lesser Restoration",
+							"Spiritual Weapon"
+						],
+						null,
+						[
+							"Beacon of Hope",
+							"Prayer"
+						],
+						null,
+						[
+							"Death Ward",
+							"Guardian of Faith"
+						],
+						null,
+						[
+							"Mass Cure Wounds",
+							"Raise Dead"
+						]
+					]
 				},
 				{
 					"name": "Light",
@@ -61,22 +131,415 @@
 					]
 				},
 				{
-					"name": "War"
+					"name": "War",
+					"spells": [
+						[
+							"Divine Favor",
+							"Shield of Faith"
+						],
+						null,
+						[
+							"Magic Weapon",
+							"Spiritual Weapon"
+						],
+						null,
+						[
+							"Holy Vigor",
+							"Prayer"
+						],
+						null,
+						[
+							"Divine Power",
+							"Freedome of Movement"
+						],
+						null,
+						[
+							"Flame Strike",
+							"Hold Monster"
+						]
+					]
 				}
 			]
 		}
-
 	},
 	{
-		"name": "Druid"
+		"name": "Druid",
+		"spellsPerDay": [
+				[2],
+				[3],
+				[4,2],
+				[4,3],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1]
+			],
+		"spec": {
+			"name": "Circle",
+			"types": [
+				{
+					"name": "Circle of the Land",
+					"types": [
+						{
+							"name": "Land",
+							"types":[
+								{
+									"name": "Coast",
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Mirror Image"
+										],
+										null,
+										[
+											"Water Breathing",
+											"Water Walk"
+										],
+										null,
+										[
+											"Freedom of Movement",
+											"Solid Fog"
+										],
+										null,
+										[
+											"Scrying",
+											"True Seeing"
+										]
+									]
+								},
+								{
+									"name": "Desert",
+									"spells": [
+										null,
+										null,
+										[
+											"Blur",
+											"Silence"
+										],
+										null,
+										[
+											"Create Food and Water",
+											"Protection from Energy"
+										],
+										null,
+										[
+											"Blight",
+											"Hallucinatory Terrain"
+										],
+										null,
+										[
+											"Control Winds",
+											"Wall of Stone"
+										]
+									]
+								},
+								{
+									"name": "Forest",
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Barkskin"
+										],
+										null,
+										[
+											"Call Lightning",
+											"Plant Growth"
+										],
+										null,
+										[
+											"Divination",
+											"Freedom of Movement"
+										],
+										null,
+										[
+											"Commune with Nature",
+											"Plant Door"
+										]
+									]
+								},
+								{
+									"name": "Grassland",
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Pass without Trace"
+										],
+										null,
+										[
+											"Daylight",
+											"Haste"
+										],
+										null,
+										[
+											"Air Walk",
+											"Divination"
+										],
+										null,
+										[
+											"Dream",
+											"Insect Plague"
+										]
+									]
+								},
+								{
+									"name": "Mountain",
+									"spells": [
+										null,
+										null,
+										[
+											"Spider Climb",
+											"Spike Growth"
+										],
+										null,
+										[
+											"Elemental Mantle",
+											"Meld into Stone"
+										],
+										null,
+										[
+											"Confusion",
+											"Stoneskin"
+										],
+										null,
+										[
+											"Passwall",
+											"Wall of Stone"
+										]
+									]
+								},
+								{
+									"name": "Swamp",
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Locate Object"
+										],
+										null,
+										[
+											"Water Walk",
+											"Stinking Cloud"
+										],
+										null,
+										[
+											"Freedom of Movement",
+											"Locate Creature"
+										],
+										null,
+										[
+											"Insect Plague",
+											"Scrying"
+										]
+									]
+								},
+																{
+									"name": "Tundra",
+									"spells": [
+										null,
+										null,
+										[
+											"Augury",
+											"Spike Growth"
+										],
+										null,
+										[
+											"Sleet Storm",
+											"Slow"
+										],
+										null,
+										[
+											"Freedom of Movement",
+											"Ice Storm"
+										],
+										null,
+										[
+											"Commune with Nature",
+											"Cone of Cold"
+										]
+									]
+								}
+							]
+						}
+						
+					]
+				},
+				{
+					"name":" Circle of the Moon"
+				}
+			]
+		}
 	},
 	{
-		"name": "Mage"
+		"name": "Mage",
+		"spellsPerDay": [
+				[2],
+				[3],
+				[4,2],
+				[4,3],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1],
+				[4,3,3,3,2,1,1,1,1]
+			]
 	},
 	{
-		"name": "Paladin"
+		"name": "Paladin",
+		"spellsPerDay": [
+				null,
+				[2],
+				[3],
+				[3],
+				[4,2],
+				[4,2],
+				[4,3],
+				[4,3],
+				[4,3,2],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2]
+			],
+		"spec":{
+			"name": "Oath",
+			"types": [
+				{
+					"name": "Devotion",
+					"spells": [
+						null,
+						null,
+						[
+							"Protection from Evil",
+							"Sanctuary"
+						],
+						null,
+						[
+							"Lesser Restoration",
+							"Zone of Truth"
+						],
+						null,
+						null,
+						null,
+						[
+							"Beacon of Hope",
+							"Dispel Magic"
+						],
+						null,
+						null,
+						null,
+						[
+							"Guardian of Faith",
+							"Freedom of Movement"
+						],
+						null,
+						null,
+						null,
+						[
+							"Flame Strike",
+							"Commune"
+						]
+					]
+				},
+				{
+					"name": "Vengeance",
+					"spells": [
+						null,
+						null,
+						[
+							"Cause Fear",
+							"Hunter's Mark"
+						],
+						null,
+						[
+							"Hold Person",
+							"Misty Step"
+						],
+						null,
+						null,
+						null,
+						[
+							"Haste",
+							"Protection from Energy"
+						],
+						null,
+						null,
+						null,
+						[
+							"Air Walk",
+							"Dimension Door"
+						],
+						null,
+						null,
+						null,
+						[
+							"Hold Monster",
+							"Scrying"
+						]
+					]
+				}
+			]
+		}
 	},
 	{
-		"name": "Ranger"
+		"name": "Ranger",
+		"spellsPerDay": [
+				null,
+				null,
+				[3],
+				[3],
+				[4,2],
+				[4,2],
+				[4,3],
+				[4,3],
+				[4,3,2],
+				[4,3,2],
+				[4,3,3],
+				[4,3,3],
+				[4,3,3,1],
+				[4,3,3,1],
+				[4,3,3,2],
+				[4,3,3,2],
+				[4,3,3,3,1],
+				[4,3,3,3,1],
+				[4,3,3,3,2],
+				[4,3,3,3,2]
+			]
 	}
 ]
