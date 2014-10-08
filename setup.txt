@@ -1,8 +1,0 @@
-Follow steps here: http://johnmunsch.com/2013/07/07/yeoman-grunt-and-bower/
-install bower and grunt-cli globally via npm
-install ruby21
-	sudo port install ruby21
-instal compass
-	sudo gem install compass
-Update Angular and related bower deps to 1.3.0-rc
-add angular-material dep
