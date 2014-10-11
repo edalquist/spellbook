@@ -4,19 +4,24 @@
     <meta charset="utf-8">
     <title>frontend</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp,src}) styles/vendor.css -->
-    
+
 
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
+    <!-- inject:css -->
+    <!-- endinject -->
+
     <!-- build:css({.tmp,src}) styles/main.css -->
-    <link rel="stylesheet" href="app/main/main.css">
+    <link rel="stylesheet" href="app/edit/edit.css">
+    <link rel="stylesheet" href="app/search/search.css">
+    <link rel="stylesheet" href="app/spellbook.css">
     <!-- endbuild -->
 
     <!-- build:js scripts/modernizr.js -->
@@ -28,7 +33,30 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div ng-view></div>
+    <section layout="horizontal" flex>
+      <material-sidenav layout="vertical" class="spellbook-sidenav material-sidenav-left material-whiteframe-z3 ng-isolate-scope open" component-id="left">
+        <material-toolbar class="material-theme-light material-medium-tall">
+          <h1 class="material-toolbar-tools" style="padding-top:25px;">
+            <a href="#" ng-click="alert('goHome')" tabindex="0">Spellbook</a>
+          </h1>
+        </material-toolbar>
+        <material-content flex="">
+          <material-button ng-href="#/search" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+            Search
+          </material-button>
+          <material-button ng-href="#/create" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+            Create
+          </material-button>
+          <material-button ng-href="#/edit" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+            Edit
+          </material-button>
+        </material-content>
+
+      </material-sidenav>
+      <material-content flex class="material-content-padding">
+        <div ng-view></div>
+      </material-content>
+    </section>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
@@ -49,12 +77,17 @@
     <script src="bower_components/angular-aria/angular-aria.js"></script>
     <script src="bower_components/hammerjs/hammer.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+    <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
+    <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({src,.tmp}) scripts/main.js -->
     <script src="app/spellbook.js"></script>
-    <script src="app/main/main.controller.js"></script>
+    <script src="app/search/search.controller.js"></script>
+    <script src="app/edit/edit.controller.js"></script>
     <script src="components/navbar/navbar.controller.js"></script>
 
     <!-- inject:partials -->

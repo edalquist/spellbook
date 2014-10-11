@@ -1,0 +1,26 @@
+<div ng-controller="EditCtrl" layout="vertical" class="spellEdit">
+
+  <material-toolbar class="theme-dark-tff material-medium-tall" style="padding-top:15px;">
+    <div class="material-toolbar-tools dark">
+      <tf-float label="Spell" value="spell.name"></tf-float>
+    </div>
+  </material-toolbar>
+
+  <material-content>
+    <form style="padding: 20px;">
+      <div class="row">
+          <tf-float label="Level" value="spell.level"> </tf-float>
+          <tf-float label="School" value="spell.school"> </tf-float>
+      </div>
+      <tf-float label="Casting Time" value="spell.castTime"> </tf-float>
+      <tf-float label="Range" value="spell.range"> </tf-float>
+      <tf-float label="Components" value="spell.components"> </tf-float>
+      <tf-float label="Duration" value="spell.duration" class="long"> </tf-float>
+      <material-input-group>
+          <label for="description">Description</label>
+          <my-material-textarea id="description" type="text" ng-model="spell.description">
+      </material-input-group>
+    </form>
+  </material-content>
+
+</div>

@@ -1,14 +1,21 @@
 'use strict';
 
-angular.module('spellbook', ['ngResource', 'ngRoute'])
-  .config(function ($routeProvider) {
+angular.module('spellbook', ['ngMaterial', 'ngResource', 'ngRoute', 'firebase'])
+  .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
-      .when('/', {
-        templateUrl: 'app/main/main.html',
-        controller: 'MainCtrl'
+      .when('/search', {
+        templateUrl: 'app/search/search.html',
+        controller: 'SearchCtrl'
+      })
+      .when('/edit/:name', {
+        templateUrl: 'app/edit/edit.html',
+        controller: 'EditCtrl'
+      })
+      .when('/create', {
+        templateUrl: 'app/edit/edit.html',
+        controller: 'EditCtrl'
       })
       .otherwise({
-        redirectTo: '/'
+        redirectTo: '/search'
       });
-  })
-;
+  }]);
