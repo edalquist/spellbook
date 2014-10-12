@@ -8,6 +8,10 @@ angular.module('spellbook')
 
     // bind spell data to scope
     syncObject.$bindTo($scope, 'spell');
+
+    $scope.levels = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    $scope.classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard'];
+    $scope.schools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
   }])
 
   /**
@@ -50,49 +54,100 @@ angular.module('spellbook')
   })
   .directive('myMaterialTextarea', function() {
     return {
-    restrict: 'E',
-    replace: true,
-    template: '<textarea >',
-    require: ['^?materialInputGroup', '?ngModel'],
-    link: function(scope, element, attr, ctrls) {
-      var inputGroupCtrl = ctrls[0];
-      var ngModelCtrl = ctrls[1];
-      if (!inputGroupCtrl) {
-        return;
-      }
+      restrict: 'E',
+      replace: true,
+      template: '<textarea >',
+      require: ['^?materialInputGroup', '?ngModel'],
+      link: function(scope, element, attr, ctrls) {
+        var inputGroupCtrl = ctrls[0];
+        var ngModelCtrl = ctrls[1];
+        if (!inputGroupCtrl) {
+          return;
+        }
 
-      // TODO need access to util class scan for disabled and transpose the `type` value to the <input> element
-      //var isDisabled = Util.isParentDisabled(element);
+        // TODO need access to util class scan for disabled and transpose the `type` value to the <input> element
+        //var isDisabled = Util.isParentDisabled(element);
 
-      // element.attr('tabindex', isDisabled ? -1 : 0 );
+        // element.attr('tabindex', isDisabled ? -1 : 0 );
 
-      // When the input value changes, check if it "has" a value, and
-      // set the appropriate class on the input group
-      if (ngModelCtrl) {
-        //Add a $formatter so we don't use up the render function
-        ngModelCtrl.$formatters.push(function(value) {
-          inputGroupCtrl.setHasValue(!!value);
-          return value;
+        // When the input value changes, check if it "has" a value, and
+        // set the appropriate class on the input group
+        if (ngModelCtrl) {
+          //Add a $formatter so we don't use up the render function
+          ngModelCtrl.$formatters.push(function(value) {
+            inputGroupCtrl.setHasValue(!!value);
+            return value;
+          });
+        }
+
+        element.on('input', function() {
+          inputGroupCtrl.setHasValue(!!element.val());
+        });
+
+        // When the input focuses, add the focused class to the group
+        element.on('focus', function() {
+          inputGroupCtrl.setFocused(true);
+        });
+        // When the input blurs, remove the focused class from the group
+        element.on('blur', function() {
+          inputGroupCtrl.setFocused(false);
+        });
+
+        scope.$on('$destroy', function() {
+          inputGroupCtrl.setFocused(false);
+          inputGroupCtrl.setHasValue(false);
         });
       }
+    };
+  })
+  .directive('myMaterialSelect', function() {
+    return {
+      restrict: 'E',
+      replace: true,
+      template: '<select><option ng-repeat="opt in options">{{opt}}</option></select>',
+      scope: {
+        options: '=options'
+      },
+      require: ['^?materialInputGroup', '?ngModel'],
+      link: function(scope, element, attr, ctrls) {
+        var inputGroupCtrl = ctrls[0];
+        var ngModelCtrl = ctrls[1];
+        if (!inputGroupCtrl) {
+          return;
+        }
 
-      element.on('input', function() {
-        inputGroupCtrl.setHasValue(!!element.val());
-      });
+        // TODO need access to util class scan for disabled and transpose the `type` value to the <input> element
+        //var isDisabled = Util.isParentDisabled(element);
 
-      // When the input focuses, add the focused class to the group
-      element.on('focus', function() {
-        inputGroupCtrl.setFocused(true);
-      });
-      // When the input blurs, remove the focused class from the group
-      element.on('blur', function() {
-        inputGroupCtrl.setFocused(false);
-      });
+        // element.attr('tabindex', isDisabled ? -1 : 0 );
 
-      scope.$on('$destroy', function() {
-        inputGroupCtrl.setFocused(false);
-        inputGroupCtrl.setHasValue(false);
-      });
-    }
+        // When the input value changes, check if it "has" a value, and
+        // set the appropriate class on the input group
+        if (ngModelCtrl) {
+          //Add a $formatter so we don't use up the render function
+          ngModelCtrl.$formatters.push(function(value) {
+            inputGroupCtrl.setHasValue(!!value);
+            return value;
+          });
+        }
+
+        element.on('input', function() {
+          inputGroupCtrl.setHasValue(!!element.val());
+        });
+
+        // When the input focuses, add the focused class to the group
+        element.on('focus', function() {
+          inputGroupCtrl.setFocused(true);
+        });
+        // When the input blurs, remove the focused class from the group
+        element.on('blur', function() {
+          inputGroupCtrl.setFocused(false);
+        });
+
+        scope.$on('$destroy', function() {
+          inputGroupCtrl.setFocused(false);
+          inputGroupCtrl.setHasValue(false);
+        });
+      }
     };
   });

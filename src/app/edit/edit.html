@@ -9,19 +9,34 @@
     <form style="padding: 20px;">
       <div class="row">
           <tf-float label="Level" value="spell.level" type="number"> </tf-float>
-          <tf-float label="School" value="spell.school"> </tf-float>
+          <material-input-group>
+              <label for="school">School</label>
+              <my-material-select id="school" type="text" options="schools" ng-model="spell.school">
+              </my-material-select>
+          </material-input-group>
       </div>
-      <tf-float label="Casting Time" value="spell.castTime"> </tf-float>
-      <tf-float label="Range" value="spell.range"> </tf-float>
-      <tf-float label="Components" value="spell.components"> </tf-float>
-      <material-checkbox ng-model="spell.concentration" aria-label="Concentration">
-        Concentration
-      </material-checkbox>
-      <tf-float label="Duration" value="spell.duration" class="long"> </tf-float>
-      <material-input-group>
-          <label for="description">Description</label>
-          <my-material-textarea id="description" type="text" ng-model="spell.description">
-      </material-input-group>
+      <div class="row">
+        <tf-float label="Casting Time" value="spell.castTime"> </tf-float>
+        <tf-float label="Range" value="spell.range"> </tf-float>
+        <tf-float label="Components" value="spell.components"> </tf-float>
+      </div>
+      <div class="row">
+        <tf-float label="Duration" value="spell.duration"> </tf-float>
+        <material-checkbox ng-model="spell.concentration" aria-label="Concentration">
+          Concentration
+        </material-checkbox>
+      </div>
+      <div class="row">
+        <div>
+          Classes
+          <material-checkbox ng-repeat='class in classes' ng-model="spell.classes[class]" aria-label="{{class}}">{{class}}</material-checkbox>
+        </div>
+
+        <material-input-group>
+            <label for="description">Description</label>
+            <my-material-textarea id="description" type="text" ng-model="spell.description"/>
+        </material-input-group>
+      </div>
     </form>
   </material-content>
 </div>

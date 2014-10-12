@@ -1,10 +1,17 @@
 <div layout="vertical" class="spellEdit">
   <material-content>
     <form style="padding: 20px;">
-      <material-input-group>
-          <label for="search">Search</label>
-          <material-input id="search" type="search" ng-model="search.text">
-      </material-input-group>
+    	<tf-float label="Search" value="search.text"> </tf-float>
+    	<div class="row">
+          Level
+          <material-checkbox ng-model="search.level1" aria-label="Level 1">1</material-checkbox>
+          <material-checkbox ng-model="search.level2" aria-label="Level 2">2</material-checkbox>
+      </div>
+      <div class="row">
+          School
+          <material-checkbox ng-model="search.level11" aria-label="Conjuration">Conjuration</material-checkbox>
+          <material-checkbox ng-model="search.level12" aria-label="Abjuration">Abjuration</material-checkbox>
+      </div>
     </form>
 
     <ul ng-repeat="(key, value) in spells">
