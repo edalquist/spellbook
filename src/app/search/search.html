@@ -1,20 +1,24 @@
 <div layout="vertical" class="spellEdit">
   <material-content>
     <form style="padding: 20px;">
-    	<tf-float label="Search" value="search.text"> </tf-float>
+    	<tf-float label="Search" value="search.text" class="long"> </tf-float>
     	<div class="row">
-          Level
-          <material-checkbox ng-model="search.level1" aria-label="Level 1">1</material-checkbox>
-          <material-checkbox ng-model="search.level2" aria-label="Level 2">2</material-checkbox>
+          Level:
+          <material-checkbox ng-repeat="level in levels" ng-model="search.level[level]" aria-label="Level {{level}}">{{level}}</material-checkbox>
       </div>
       <div class="row">
-          School
-          <material-checkbox ng-model="search.level11" aria-label="Conjuration">Conjuration</material-checkbox>
-          <material-checkbox ng-model="search.level12" aria-label="Abjuration">Abjuration</material-checkbox>
+          School:
+          <material-checkbox ng-repeat="school in schools" ng-model="search.school[school]" aria-label="{{school}}">{{school}}</material-checkbox>
+      </div>
+      <div class="row">
+          Class:
+          <material-checkbox ng-repeat="class in classes" ng-model="search.class[class]" aria-label="{{class}}">{{class}}</material-checkbox>
       </div>
     </form>
 
-    <ul ng-repeat="(key, value) in spells">
+    <div>{{search}}</div>
+
+    <ul ng-repeat="(key, value) in filterSpells(spells)">
 			<li><a href="{{ key }}">{{ key }}</a> - {{ value.description }}</li>
 		</ul>
   </material-content>
