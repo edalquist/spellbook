@@ -34,25 +34,27 @@
     <![endif]-->
 
     <section layout="horizontal" flex>
-      <material-sidenav layout="vertical" class="spellbook-sidenav material-sidenav-left material-whiteframe-z3 ng-isolate-scope open" component-id="left">
-        <material-toolbar class="material-theme-light material-medium-tall">
-          <h1 class="material-toolbar-tools" style="padding-top:25px;">
-            <a href="#" ng-click="alert('goHome')" tabindex="0">Spellbook</a>
-          </h1>
-        </material-toolbar>
-        <material-content flex="">
-          <material-button ng-href="#/search" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
-            Search
-          </material-button>
-          <material-button ng-href="#/create" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
-            Create
-          </material-button>
-          <material-button ng-href="#/edit" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
-            Edit
-          </material-button>
-        </material-content>
+      <div ng-controller="MenuCtrl">
+        <material-sidenav layout="vertical" class="spellbook-sidenav material-sidenav-left material-whiteframe-z3 ng-isolate-scope open" component-id="left">
+          <material-toolbar class="material-theme-light material-medium-tall">
+            <h1 class="material-toolbar-tools" style="padding-top:25px;">
+              <a href="#" ng-click="alert('goHome')" tabindex="0">Spellbook</a>
+            </h1>
+          </material-toolbar>
+          <material-content flex="">
+            <material-button ng-href="#/search" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+              Search
+            </material-button>
+            <material-button ng-click="spellNamePrompt()" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+              Create
+            </material-button>
+            <material-button ng-href="#/edit" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
+              Edit
+            </material-button>
+          </material-content>
 
-      </material-sidenav>
+        </material-sidenav>
+      </div>
       <material-content flex class="material-content-padding">
         <div ng-view></div>
       </material-content>
@@ -88,7 +90,7 @@
     <script src="app/spellbook.js"></script>
     <script src="app/search/search.controller.js"></script>
     <script src="app/edit/edit.controller.js"></script>
-    <script src="components/navbar/navbar.controller.js"></script>
+    <script src="components/menu/menu.controller.js"></script>
 
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->

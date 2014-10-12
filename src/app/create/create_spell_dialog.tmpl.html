@@ -1,0 +1,16 @@
+<head/><material-dialog aria-label="Enter Spell Name">
+  <form style="padding: 20px;">
+    <material-input-group>
+        <label for="name">Spell Name</label>
+        <material-input id="name" type="text" ng-model="spell.name">
+    </material-input-group>
+  </form>
+  <div class="dialog-actions" layout="horizontal" layout-align="end">
+    <material-button ng-click="create()">
+      Create
+    </material-button>
+    <material-button ng-click="cancel()">
+      Cancel
+    </material-button>
+  </div>
+</material-dialog>

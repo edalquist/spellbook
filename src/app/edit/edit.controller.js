@@ -4,15 +4,10 @@ angular.module('spellbook')
   .controller('EditCtrl', ['$scope', '$routeParams', '$firebase', function ($scope, $routeParams, $firebase) {
     var ref = new Firebase('https://amber-torch-9218.firebaseio.com/spells/' + $routeParams.name);
     var sync = $firebase(ref);
-
-    // download the data into a local object
     var syncObject = sync.$asObject();
 
-    // TODO verify that routParams.name == spell.name
-
-    // synchronize the object with a three-way data binding
-    // click on `index.html` above to see it used in the DOM!
-    syncObject.$bindTo($scope, "spell");
+    // bind spell data to scope
+    syncObject.$bindTo($scope, 'spell');
   }])
 
   /**
@@ -44,7 +39,7 @@ angular.module('spellbook')
             element.attr('type', attrs.type || 'text');
             element.attr('class', attrs.class );
           }
-        }
+        };
       },
       template:
         '<material-input-group ng-disabled="isDisabled">' +
@@ -66,7 +61,7 @@ angular.module('spellbook')
         return;
       }
 
-      // scan for disabled and transpose the `type` value to the <input> element
+      // TODO need access to util class scan for disabled and transpose the `type` value to the <input> element
       //var isDisabled = Util.isParentDisabled(element);
 
       // element.attr('tabindex', isDisabled ? -1 : 0 );
@@ -86,11 +81,11 @@ angular.module('spellbook')
       });
 
       // When the input focuses, add the focused class to the group
-      element.on('focus', function(e) {
+      element.on('focus', function() {
         inputGroupCtrl.setFocused(true);
       });
       // When the input blurs, remove the focused class from the group
-      element.on('blur', function(e) {
+      element.on('blur', function() {
         inputGroupCtrl.setFocused(false);
       });
 

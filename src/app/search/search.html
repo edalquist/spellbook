@@ -1,1 +1,15 @@
-SEARCH
+<div layout="vertical" class="spellEdit">
+  <material-content>
+    <form style="padding: 20px;">
+      <material-input-group>
+          <label for="search">Search</label>
+          <material-input id="search" type="search" ng-model="search.text">
+      </material-input-group>
+    </form>
+
+    <ul ng-repeat="(key, value) in spells">
+			<li><a href="{{ key }}">{{ key }}</a> - {{ value.description }}</li>
+		</ul>
+  </material-content>
+
+</div>
