@@ -27,19 +27,51 @@ angular.module('spellbook')
     			return;
     		}
 
-    		var include = false;
+    		// if (text matches) && (level matches) && (class matches) && (school matches)
+
+    		// Run text search on the spell
+    		var textMatches = false;
     		if (angular.isString($scope.search.text) && $scope.search.text.length > 0) {
     			var searchRegex = new RegExp($scope.search.text, "i");
-    			include = key.search(searchRegex) >= 0;
-    			include = include || value.description.search(searchRegex) >= 0;
-    			include = include || value.duration.search(searchRegex) >= 0;
-    			include = include || value.school.search(searchRegex) >= 0;
-    			// TODO search the classes
+    			textMatches = key.search(searchRegex) >= 0 || value.description.search(searchRegex) >= 0;
     		} else {
-    			include = true;
+    			textMatches = true;
     		}
 
-			  if (include) {
+    		// Run level filter on the spell
+    		var hasLevelFilter = false;
+    		var levelMatches = false;
+    		angular.forEach($scope.search.level, function(checked, level) {
+    			if (checked) {
+	    			hasLevelFilter = true;
+	    			levelMatches = levelMatches || value.level == level;
+	    		}
+    		});
+    		levelMatches = levelMatches || !hasLevelFilter;
+
+    		// Run class filter on the spell
+    		var hasClassFilter = false;
+    		var classMatches = false;
+    		angular.forEach($scope.search.cls, function(checked, cls) {
+    			if (checked) {
+	    			hasClassFilter = true;
+	    			classMatches = classMatches || value.classes[cls];
+	    		}
+    		});
+    		classMatches = classMatches || !hasClassFilter;
+
+    		// Run school filter on the spell
+    		var hasSchoolFilter = false;
+    		var schoolMatches = false;
+    		angular.forEach($scope.search.school, function(checked, school) {
+    			if (checked) {
+	    			hasSchoolFilter = true;
+	    			schoolMatches = schoolMatches || value.school == school;
+	    		}
+    		});
+    		schoolMatches = schoolMatches || !hasSchoolFilter;
+
+			  if (textMatches && levelMatches && classMatches && schoolMatches) {
 			  	filteredSpells[key] = value;
 			  }
 			});
