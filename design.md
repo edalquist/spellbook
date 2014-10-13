@@ -17,15 +17,26 @@ Edit
 
 
 Data Model
-	Spell
-		String name
-		Map<String, ?> attributes //would be nice to define concrete types for attribute values, better searching
-		Set<String> classes
-		String description //UI should render markdown here
+	spells
+		spellName
+			attr1
+			attr2
 
-	Class
-		Set<String> spells
+	levels
+		1: counter
+		2: counter
+		3: counter
 
+	schools
+		Conjuration: counter
+		Abjuration: counter
+
+
+
+Search Data
+	Search Text
+	Level checkboxs
+	School
 
 
 Reference Links

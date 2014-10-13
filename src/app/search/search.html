@@ -3,15 +3,15 @@
     <form style="padding: 20px;">
     	<tf-float label="Search" value="search.text" class="long"> </tf-float>
     	<div class="row">
-          Level:
+          <span class="filterTitle">Level:</span>
           <material-checkbox ng-repeat="level in levels" ng-model="search.level[level]" aria-label="Level {{level}}">{{level}}</material-checkbox>
       </div>
       <div class="row">
-          School:
+          <span class="filterTitle">School:</span>
           <material-checkbox ng-repeat="school in schools" ng-model="search.school[school]" aria-label="{{school}}">{{school}}</material-checkbox>
       </div>
       <div class="row">
-          Class:
+          <span class="filterTitle">Class:</span>
           <material-checkbox ng-repeat="cls in classes" ng-model="search.cls[cls]" aria-label="{{cls}}">{{cls}}</material-checkbox>
       </div>
     </form>
@@ -22,8 +22,10 @@
           <div class="material-tile-left">
               <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
           </div>
-          <div class="material-tile-content">
+          <div class="material-tile-content" style="max-width: 800px;">
             <h3><a href="#/edit/{{ key }}">{{ key }}</a></h3>
+						<h4 ng-if="value.level == 'Cantrip'" style="font-style: italic;">{{ value.school }} {{ value.level }}</h4>
+						<h4 ng-if="value.level != 'Cantrip'" style="font-style: italic;">{{ value.level | ordinal }}-level {{ value.school }}</h4>
             <h4><span style="font-weight: bold;">Casting Time:</span> {{ value.castTime }}</h4>
             <h4><span style="font-weight: bold;">Range:</span> {{ value.range }}</h4>
             <h4><span style="font-weight: bold;">Components:</span> {{ value.components }}</h4>

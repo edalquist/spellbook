@@ -14,7 +14,7 @@ angular.module('spellbook')
     	console.log($scope.spells);
     });
 
-    $scope.levels = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    $scope.levels = ['Cantrip', 1, 2, 3, 4, 5, 6, 7, 8, 9];
     $scope.classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard'];
     $scope.schools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
 
@@ -77,4 +77,15 @@ angular.module('spellbook')
 			});
     	return filteredSpells;
     };
-  }]);
+  }]).filter('ordinal', function() {
+	  var ordinal = function(input) {
+	    // Only process numeric values.
+	    if (isNaN(input) || input === null) return input;
+
+	    var s=["th","st","nd","rd"],
+	    v=input%100;
+	    return input+(s[(v-20)%10]||s[v]||s[0]);
+	  }
+
+	  return ordinal;
+	});
