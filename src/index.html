@@ -48,9 +48,6 @@
             <material-button ng-click="spellNamePrompt()" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
               Create
             </material-button>
-            <material-button ng-href="#/edit" class="material-button-colored" ng-class="{active: menu.isPageSelected(section, page)}" style="align: left; width: 100%;">
-              Edit
-            </material-button>
           </material-content>
 
         </material-sidenav>
@@ -72,6 +69,7 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/marked/lib/marked.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
@@ -83,6 +81,7 @@
     <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
     <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
     <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+    <script src="bower_components/angular-md/dist/angular-md.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

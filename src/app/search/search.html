@@ -16,11 +16,24 @@
       </div>
     </form>
 
-    <div>{{search}}</div>
+    <material-list>
+    	<material-item ng-repeat="(key, value) in filterSpells(spells)">
+        <material-item-content>
+          <div class="material-tile-left">
+              <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+          </div>
+          <div class="material-tile-content">
+            <h3><a href="#/edit/{{ key }}">{{ key }}</a></h3>
+            <h4><span style="font-weight: bold;">Casting Time:</span> {{ value.castTime }}</h4>
+            <h4><span style="font-weight: bold;">Range:</span> {{ value.range }}</h4>
+            <h4><span style="font-weight: bold;">Components:</span> {{ value.components }}</h4>
+            <h4><span style="font-weight: bold;">Duration:</span> <span ng-if="value.concentration">Concentration, </span>{{ value.duration }}</h4>
+            <md ng-model="value.description" style="font-size: 1.2em;"></md>
+          </div>
+        </material-item-content>
+      </material-item>
 
-    <ul ng-repeat="(key, value) in filterSpells(spells)">
-			<li><a href="{{ key }}">{{ key }}</a> - {{ value.description }}</li>
-		</ul>
+    </material-list>
   </material-content>
 
 </div>

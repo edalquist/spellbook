@@ -1,6 +1,6 @@
 <div layout="vertical" class="spellEdit">
-  <material-toolbar class="theme-dark-tff material-medium-tall" style="padding-top:15px;">
-    <div class="material-toolbar-tools dark">
+  <material-toolbar class="material-medium-tall" style="padding-top:15px;">
+    <div class="material-toolbar-tools">
       <tf-float label="Spell" value="spell.$id" disabled></tf-float>
     </div>
   </material-toolbar>
@@ -34,9 +34,11 @@
 
         <material-input-group>
             <label for="description">Description</label>
-            <my-material-textarea id="description" type="text" ng-model="spell.description"/>
+            <my-material-textarea id="description" type="text" ng-model="spell.description" rows="12" cols="55"/>
         </material-input-group>
       </div>
     </form>
+    <div>Description Preview (<a href="http://daringfireball.net/projects/markdown/" target="_blank">markdown</a>)</div>
+    <md ng-model="spell.description"></md>
   </material-content>
 </div>
