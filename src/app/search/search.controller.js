@@ -10,9 +10,6 @@ angular.module('spellbook')
 
     // bind all spell data to spells object
     var bindP = syncObject.$bindTo($scope, 'spells');
-    bindP.then(function() {
-    	console.log($scope.spells);
-    });
 
     $scope.levels = ['Cantrip', 1, 2, 3, 4, 5, 6, 7, 8, 9];
     $scope.classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard'];

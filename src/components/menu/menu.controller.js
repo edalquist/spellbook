@@ -17,7 +17,7 @@ angular.module('spellbook')
 	    $materialDialog.show({
 	      templateUrl: 'app/create/create_spell_dialog.tmpl.html',
 	      targetEvent: ev,
-	      controller: CreateSpellDialogController
+	      controller: ['$scope', '$materialDialog', CreateSpellDialogController]
 	    }).then(function(spellName) {
 	    	$location.path('/edit/' + spellName);
 	    });

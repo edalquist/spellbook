@@ -24,8 +24,8 @@
           </div>
           <div class="material-tile-content" style="max-width: 800px;">
             <h3><a href="#/edit/{{ key }}">{{ key }}</a></h3>
-						<h4 ng-if="value.level == 'Cantrip'" style="font-style: italic;">{{ value.school }} {{ value.level }}</h4>
-						<h4 ng-if="value.level != 'Cantrip'" style="font-style: italic;">{{ value.level | ordinal }}-level {{ value.school }}</h4>
+						<h4 ng-if="value.level == 'Cantrip'" style="font-style: italic;">{{ value.school }} {{ value.level }}<span ng-if="value.ritual"> (ritual)</span></h4>
+						<h4 ng-if="value.level != 'Cantrip'" style="font-style: italic;">{{ value.level | ordinal }}-level {{ value.school }}<span ng-if="value.ritual"> (ritual)</span></h4>
             <h4><span style="font-weight: bold;">Casting Time:</span> {{ value.castTime }}</h4>
             <h4><span style="font-weight: bold;">Range:</span> {{ value.range }}</h4>
             <h4><span style="font-weight: bold;">Components:</span> {{ value.components }}</h4>
