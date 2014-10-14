@@ -30,7 +30,7 @@ angular.module('spellbook')
     		var textMatches = false;
     		if (angular.isString($scope.search.text) && $scope.search.text.length > 0) {
     			var searchRegex = new RegExp($scope.search.text, "i");
-    			textMatches = key.search(searchRegex) >= 0 || value.description.search(searchRegex) >= 0;
+    			textMatches = key.search(searchRegex) >= 0 || (value.description && value.description.search(searchRegex) >= 0);
     		} else {
     			textMatches = true;
     		}
