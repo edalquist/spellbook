@@ -68,7 +68,21 @@ angular.module('spellbook')
     		});
     		schoolMatches = schoolMatches || !hasSchoolFilter;
 
-			  if (textMatches && levelMatches && classMatches && schoolMatches) {
+    		var concentrationMatches = false;
+    		if (angular.isDefined($scope.search.concentration)) {
+    			concentrationMatches = ($scope.search.concentration && value.concentration) || (!$scope.search.concentration && !value.concentration);
+    		} else {
+    			concentrationMatches = true;
+    		}
+
+    		var ritualMatches = false;
+    		if (angular.isDefined($scope.search.ritual)) {
+    			ritualMatches = ($scope.search.ritual && value.ritual) || (!$scope.search.ritual && !value.ritual);
+    		} else {
+    			ritualMatches = true;
+    		}
+
+			  if (textMatches && levelMatches && classMatches && schoolMatches && concentrationMatches && ritualMatches) {
 			  	filteredSpells[key] = value;
 			  }
 			});

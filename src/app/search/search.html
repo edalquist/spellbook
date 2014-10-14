@@ -14,8 +14,36 @@
           <span class="filterTitle">Class:</span>
           <material-checkbox ng-repeat="cls in classes" ng-model="search.cls[cls]" aria-label="{{cls}}">{{cls}}</material-checkbox>
       </div>
+      <div class="row">
+          <span class="filterTitle">Conc:</span>
+          <material-radio-group ng-model="search.concentration" layout="horizontal">
+				    <material-radio-button ng-value="{{true}}" aria-label="Yes" class="radioMarginFix">
+				      Yes
+				    </material-radio-button>
+				    <material-radio-button ng-value="{{false}}" aria-label="Yes" class="radioMarginFix">
+				      No
+				    </material-radio-button>
+				    <material-radio-button ng-value="{{}}" aria-label="Yes" class="radioMarginFix">
+				      Any
+				    </material-radio-button>
+				  </material-radio-group>
+      </div>
+      <div class="row">
+          <span class="filterTitle">Ritual:</span>
+          <material-radio-group ng-model="search.ritual" layout="horizontal">
+				    <material-radio-button ng-value="{{true}}" aria-label="Yes" class="radioMarginFix">
+				      Yes
+				    </material-radio-button>
+				    <material-radio-button ng-value="{{false}}" aria-label="Yes" class="radioMarginFix">
+				      No
+				    </material-radio-button>
+				    <material-radio-button ng-value="{{}}" aria-label="Yes" class="radioMarginFix">
+				      Any
+				    </material-radio-button>
+				  </material-radio-group>
+      </div>
     </form>
-
+    {{search}}
     <material-list>
     	<material-item ng-repeat="(key, value) in filterSpells(spells)">
         <material-item-content>
