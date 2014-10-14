@@ -43,7 +43,7 @@
 				  </material-radio-group>
       </div>
     </form>
-    {{search}}
+
     <material-list>
     	<material-item ng-repeat="(key, value) in filterSpells(spells)">
         <material-item-content>
@@ -64,6 +64,7 @@
       </material-item>
 
     </material-list>
+    <div>{{ skippedSpells }} Spells Not Shown, use the filter options to find what you want</div>
   </material-content>
 
 </div>

@@ -16,15 +16,22 @@ angular.module('spellbook')
     $scope.schools = ['Abjuration', 'Conjuration', 'Divination', 'Enchantment', 'Evocation', 'Illusion', 'Necromancy', 'Transmutation'];
 
     $scope.search = {};
+    $scope.skippedSpells = 0;
 
     $scope.filterSpells = function(spells) {
+    	var spellCount = 0;
     	var filteredSpells = {};
+    	$scope.skippedSpells = 0;
     	angular.forEach(spells, function(value, key) {
     		if (!angular.isObject(value)) {
     			return;
     		}
 
-    		// if (text matches) && (level matches) && (class matches) && (school matches)
+    		// Limit to first N spells
+    		if (spellCount >= 30) {
+    			$scope.skippedSpells++;
+    			return;
+    		}
 
     		// Run text search on the spell
     		var textMatches = false;
@@ -83,6 +90,7 @@ angular.module('spellbook')
     		}
 
 			  if (textMatches && levelMatches && classMatches && schoolMatches && concentrationMatches && ritualMatches) {
+			  	spellCount++;
 			  	filteredSpells[key] = value;
 			  }
 			});
