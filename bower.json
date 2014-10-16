@@ -17,5 +17,17 @@
   "resolutions": {
     "angular": "1.3.x",
     "modernizr": "2.8.x"
-  }
+  },
+  "overrides": {
+      "angular-md": {
+          "main": "dist/angular-md.js",
+          "dependencies": {
+            "angular": "1.2.10",
+            "marked": "0.3.0"
+          }
+      },
+      "marked": {
+          "main": "lib/marked.js"
+      }
+    }
 }
