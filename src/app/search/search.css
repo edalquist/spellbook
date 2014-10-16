@@ -1,7 +1,7 @@
 .filterTitle {
-	width: 3em;
+	flex: 0 0 4em;
 }
 
-.radioMarginFix {
+.controlMarginFix {
 	margin: 0 20px 0 0px;
 }

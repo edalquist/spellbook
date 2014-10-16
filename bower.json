@@ -1,33 +1,41 @@
 {
   "name": "spellbook",
   "version": "0.0.0",
+  "homepage": "https://github.com/edalquist/spellbook",
+  "authors": [
+    "Eric Dalquist <eric.dalquist@gmail.com>"
+  ],
+  "description": "D&D Spellbook",
+  "license": "Apache 2",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/bower_components",
+    "test",
+    "tests"
+  ],
   "dependencies": {
-    "modernizr": "2.8.x",
-    "angular": "1.3.x",
-    "angular-resource": "1.3.x",
-    "angular-route": "1.3.x",
-    "angular-material": "~0.4.0",
-    "firebase": "~1.1.0",
+    "angular": "~1.3.0",
+    "angular-route": "1.3.0-rc.4",
+    "angular-material": "~0.4.1",
+    "firebase": "~1.1.2",
     "angularfire": "~0.8.2",
-    "angular-md": "~1.0.0"
-  },
-  "devDependencies": {
-    "angular-mocks": "1.3.x"
-  },
-  "resolutions": {
-    "angular": "1.3.x",
-    "modernizr": "2.8.x"
+    "angular-md": "~1.0.0",
+    "modernizr": "~2.8.3",
+    "ng-stats": "~1.0.3"
   },
   "overrides": {
-      "angular-md": {
-          "main": "dist/angular-md.js",
-          "dependencies": {
-            "angular": "1.2.10",
-            "marked": "0.3.0"
-          }
-      },
-      "marked": {
-          "main": "lib/marked.js"
+    "angular-md": {
+      "main": "dist/angular-md.js",
+      "dependencies": {
+        "angular": "~1.3.0",
+        "marked": "0.3.0"
       }
+    },
+    "marked": {
+      "main": "lib/marked.js"
     }
+  }
 }

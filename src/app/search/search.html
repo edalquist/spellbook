@@ -1,70 +1,91 @@
-<div layout="vertical" class="spellEdit">
-  <material-content>
-    <form style="padding: 20px;">
-    	<tf-float label="Search" value="search.text" class="long"> </tf-float>
-    	<div class="row">
-          <span class="filterTitle">Level:</span>
-          <material-checkbox ng-repeat="level in levels" ng-model="search.level[level]" aria-label="Level {{level}}">{{level}}</material-checkbox>
-      </div>
-      <div class="row">
-          <span class="filterTitle">School:</span>
-          <material-checkbox ng-repeat="school in schools" ng-model="search.school[school]" aria-label="{{school}}">{{school}}</material-checkbox>
-      </div>
-      <div class="row">
-          <span class="filterTitle">Class:</span>
-          <material-checkbox ng-repeat="cls in classes" ng-model="search.cls[cls]" aria-label="{{cls}}">{{cls}}</material-checkbox>
-      </div>
-      <div class="row">
-          <span class="filterTitle">Conc:</span>
-          <material-radio-group ng-model="search.concentration" layout="horizontal">
-				    <material-radio-button ng-value="{{true}}" aria-label="Yes" class="radioMarginFix">
+<md-content layout="vertical">
+
+  <form style="padding: 20px;">
+  	<tf-float label="Search" value="search.text" class="long"> </tf-float>
+  	<div layout="vertical" layout-sm="horizontal" layout-align="space-between">
+        <div class="filterTitle">Level:</div>
+        <div flex="9" ng-repeat="level in levels">
+        	<md-checkbox ng-model="search.level[level]" aria-label="Level {{level}}"  class="controlMarginFix">{{level}}</md-checkbox>
+        </div>
+    </div>
+    <div layout="vertical" layout-md="horizontal" layout-align="space-between">
+        <div class="filterTitle">School:</div>
+        <div flex="9" ng-repeat="school in schools">
+        	<md-checkbox ng-model="search.school[school]" aria-label="{{school}}"  class="controlMarginFix">{{school}}</md-checkbox>
+        </div>
+        <div flex></div>
+    </div>
+    <div layout="vertical" layout-md="horizontal">
+        <div class="filterTitle">Class:</div>
+        <div flex="9" ng-repeat="cls in classes">
+        	<md-checkbox ng-model="search.cls[cls]" aria-label="{{cls}}"  class="controlMarginFix" flex="9">{{cls}}</md-checkbox>
+        </div>
+        <div flex></div>
+    </div>
+    <div layout="vertical" layout-sm="horizontal">
+        <div class="filterTitle">Conc:</div>
+        <md-radio-group ng-model="search.concentration" layout="horizontal">
+        	<div flex="9">
+				    <md-radio-button ng-value="{{true}}" aria-label="Yes" class="controlMarginFix">
 				      Yes
-				    </material-radio-button>
-				    <material-radio-button ng-value="{{false}}" aria-label="Yes" class="radioMarginFix">
+				    </md-radio-button>
+			    </div>
+			    <div flex="9">
+				    <md-radio-button ng-value="{{false}}" aria-label="Yes" class="controlMarginFix">
 				      No
-				    </material-radio-button>
-				    <material-radio-button ng-value="{{}}" aria-label="Yes" class="radioMarginFix">
+				    </md-radio-button>
+			    </div>
+			    <div flex="9">
+				    <md-radio-button ng-value="{{}}" aria-label="Yes" class="controlMarginFix">
 				      Any
-				    </material-radio-button>
-				  </material-radio-group>
-      </div>
-      <div class="row">
-          <span class="filterTitle">Ritual:</span>
-          <material-radio-group ng-model="search.ritual" layout="horizontal">
-				    <material-radio-button ng-value="{{true}}" aria-label="Yes" class="radioMarginFix">
+				    </md-radio-button>
+			    </div>
+			  </md-radio-group>
+        <div flex></div>
+    </div>
+    <div layout="vertical" layout-sm="horizontal">
+        <div class="filterTitle">Ritual:</div>
+        <md-radio-group ng-model="search.ritual" layout="horizontal">
+        	<div flex="9">
+				    <md-radio-button ng-value="{{true}}" aria-label="Yes" class="controlMarginFix">
 				      Yes
-				    </material-radio-button>
-				    <material-radio-button ng-value="{{false}}" aria-label="Yes" class="radioMarginFix">
+				    </md-radio-button>
+			    </div>
+			    <div flex="9">
+				    <md-radio-button ng-value="{{false}}" aria-label="Yes" class="controlMarginFix">
 				      No
-				    </material-radio-button>
-				    <material-radio-button ng-value="{{}}" aria-label="Yes" class="radioMarginFix">
+				    </md-radio-button>
+			    </div>
+			    <div flex="9">
+				    <md-radio-button ng-value="{{}}" aria-label="Yes" class="controlMarginFix">
 				      Any
-				    </material-radio-button>
-				  </material-radio-group>
-      </div>
-    </form>
+				    </md-radio-button>
+			    </div>
+			  </md-radio-group>
+        <div flex></div>
+    </div>
+  </form>
 
-    <material-list>
-    	<material-item ng-repeat="(key, value) in filterSpells(spells)">
-        <material-item-content>
-          <div class="material-tile-left">
-              <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
-          </div>
-          <div class="material-tile-content" style="max-width: 800px;">
-            <h3><a href="#/edit/{{ key }}">{{ key }}</a></h3>
-						<h4 ng-if="value.level == 'Cantrip'" style="font-style: italic;">{{ value.school }} {{ value.level }}<span ng-if="value.ritual"> (ritual)</span></h4>
-						<h4 ng-if="value.level != 'Cantrip'" style="font-style: italic;">{{ value.level | ordinal }}-level {{ value.school }}<span ng-if="value.ritual"> (ritual)</span></h4>
-            <h4><span style="font-weight: bold;">Casting Time:</span> {{ value.castTime }}</h4>
-            <h4><span style="font-weight: bold;">Range:</span> {{ value.range }}</h4>
-            <h4><span style="font-weight: bold;">Components:</span> {{ value.components }}</h4>
-            <h4><span style="font-weight: bold;">Duration:</span> <span ng-if="value.concentration">Concentration, </span>{{ value.duration }}</h4>
-            <md ng-model="value.description" style="font-size: 1.2em;"></md>
-          </div>
-        </material-item-content>
-      </material-item>
 
-    </material-list>
-    <div>{{ skippedSpells }} Spells Not Shown, use the filter options to find what you want</div>
-  </material-content>
+  <md-list>
+  	<md-item ng-repeat="(key, value) in filterSpells(spells)">
+      <md-item-content>
+        <div class="md-tile-left">
+            <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
+        </div>
+        <div class="md-tile-content" style="max-width: 800px;">
+          <h3><a href="#/edit/{{ ::key }}">{{ key }}</a></h3>
+					<h4 ng-if="::value.level == 'Cantrip'" style="font-style: italic;">{{ ::value.school }} {{ ::value.level }}<span ng-if="value.ritual"> (ritual)</span></h4>
+					<h4 ng-if="::value.level != 'Cantrip'" style="font-style: italic;">{{ ::value.level | ordinal }}-level {{ ::value.school }}<span ng-if="::value.ritual"> (ritual)</span></h4>
+          <h4><span style="font-weight: bold;">Casting Time:</span> {{ ::value.castTime }}</h4>
+          <h4><span style="font-weight: bold;">Range:</span> {{ ::value.range }}</h4>
+          <h4><span style="font-weight: bold;">Components:</span> {{ ::value.components }}</h4>
+          <h4><span style="font-weight: bold;">Duration:</span> <span ng-if="::value.concentration">Concentration, </span>{{ ::value.duration }}</h4>
+          <md ng-model="::value.description" style="font-size: 1.2em;"></md>
+        </div>
+      </md-item-content>
+    </md-item>
 
-</div>
+  </md-list>
+  <div>{{ skippedSpells }} Spells Not Shown, use the filter options to find what you want</div>
+</md-content>

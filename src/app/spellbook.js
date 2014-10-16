@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('spellbook', ['ngMaterial', 'ngResource', 'ngRoute', 'firebase', 'yaru22.md'])
+angular.module('spellbook', ['ngMaterial', 'ngRoute', 'firebase', 'yaru22.md', 'angularStats'])
   .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
       .when('/search', {
