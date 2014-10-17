@@ -16,8 +16,13 @@ angular.module('spellbook')
     // TODO turn this into services & factories
     var ref = new Firebase('https://amber-torch-9218.firebaseio.com');
     var authClient = $firebaseSimpleLogin(ref);
-
     $scope.auth = authClient;
+
+    $scope.$on('$firebaseSimpleLogin:login', function(event, user) {
+      // save the user's profile into Firebase so we can
+      // list users, use them in security rules, and show profiles
+      ref.child('users').child(user.uid).update(user);
+    });
 
     // TODO need to reload data correctly after auth
 

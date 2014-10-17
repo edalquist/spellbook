@@ -21,12 +21,11 @@ angular.module('spellbook')
 	    syncObject.$bindTo($scope, 'spells');
 	  };
 
+	  // Show/hide data when user logs in or logs out
 		$scope.$on('$firebaseSimpleLogin:login', function() {
-			console.log('login', arguments);
 			$scope.$evalAsync(doSync);
 		});
 		$scope.$on('$firebaseSimpleLogin:logout', function() {
-			console.log('logout', arguments);
 			$scope.$evalAsync(doUnSync);
 		});
 
