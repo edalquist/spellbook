@@ -24,7 +24,8 @@
     "angularfire": "~0.8.2",
     "angular-md": "~1.0.0",
     "modernizr": "~2.8.3",
-    "ng-stats": "~1.0.3"
+    "ng-stats": "~1.0.3",
+    "firebase-simple-login": "~1.6.4"
   },
   "overrides": {
     "angular-md": {

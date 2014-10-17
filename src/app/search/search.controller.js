@@ -5,11 +5,31 @@ angular.module('spellbook')
   	var ref = new Firebase('https://amber-torch-9218.firebaseio.com/spells');
 		var sync = $firebase(ref);
 
-		// asObject starts the data download
-		var syncObject = sync.$asObject();
+		var syncObject;
+		var doUnSync = function() {
+			if (syncObject) {
+				syncObject.$destroy();
+				syncObject = null;
+			}
+	  };
 
-    // bind all spell data to spells object
-    var bindP = syncObject.$bindTo($scope, 'spells');
+		var doSync = function() {
+			doUnSync();
+			// asObject starts the data download
+			syncObject = sync.$asObject();
+			// bind all spell data to spells object
+	    syncObject.$bindTo($scope, 'spells');
+	  };
+
+		$scope.$on('$firebaseSimpleLogin:login', function() {
+			console.log('login', arguments);
+			$scope.$evalAsync(doSync);
+		});
+		$scope.$on('$firebaseSimpleLogin:logout', function() {
+			console.log('logout', arguments);
+			$scope.$evalAsync(doUnSync);
+		});
+
 
     $scope.levels = ['Cantrip', 1, 2, 3, 4, 5, 6, 7, 8, 9];
     $scope.classes = ['Bard', 'Cleric', 'Druid', 'Paladin', 'Ranger', 'Sorcerer', 'Warlock', 'Wizard'];
