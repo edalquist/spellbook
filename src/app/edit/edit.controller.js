@@ -52,7 +52,7 @@ angular.module('spellbook')
         '</md-input-group>'
     };
   })
-  .directive('myMaterialTextarea', function() {
+  .directive('myMdTextarea', function() {
     return {
       restrict: 'E',
       replace: true,

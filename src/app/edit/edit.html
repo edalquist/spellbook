@@ -1,19 +1,19 @@
 <div layout="vertical" class="spellEdit">
-  <material-toolbar class="material-medium-tall" style="padding-top:15px;">
-    <div class="material-toolbar-tools">
+  <md-toolbar class="md-medium-tall" style="padding-top:15px;">
+    <div class="md-toolbar-tools">
       <tf-float label="Spell" value="spell.$id" disabled></tf-float>
     </div>
-  </material-toolbar>
+  </md-toolbar>
 
-  <material-content>
+  <md-content>
     <form style="padding: 20px;">
       <div class="row">
           <tf-float label="Level" value="spell.level"> </tf-float>
-          <material-input-group>
+          <md-input-group>
               <label for="school">School</label>
-              <my-material-select id="school" options="schools" ng-model="spell.school">
-              </my-material-select>
-          </material-input-group>
+              <my-md-select id="school" options="schools" ng-model="spell.school">
+              </my-md-select>
+          </md-input-group>
       </div>
       <div class="row">
         <tf-float label="Casting Time" value="spell.castTime"> </tf-float>
@@ -22,26 +22,26 @@
       </div>
       <div class="row">
         <tf-float label="Duration" value="spell.duration"> </tf-float>
-        <material-checkbox ng-model="spell.concentration" aria-label="Concentration">
+        <md-checkbox ng-model="spell.concentration" aria-label="Concentration">
           Concentration
-        </material-checkbox>
-        <material-checkbox ng-model="spell.ritual" aria-label="Ritual">
+        </md-checkbox>
+        <md-checkbox ng-model="spell.ritual" aria-label="Ritual">
           Ritual
-        </material-checkbox>
+        </md-checkbox>
       </div>
       <div class="row">
         <div>
           Classes
-          <material-checkbox ng-repeat='class in classes' ng-model="spell.classes[class]" aria-label="{{class}}">{{class}}</material-checkbox>
+          <md-checkbox ng-repeat='class in classes' ng-model="spell.classes[class]" aria-label="{{class}}">{{class}}</md-checkbox>
         </div>
 
-        <material-input-group>
+        <md-input-group>
             <label for="description">Description</label>
-            <my-material-textarea id="description" type="text" ng-model="spell.description" rows="12" cols="55"/>
-        </material-input-group>
+            <my-md-textarea id="description" type="text" ng-model="spell.description" rows="12" cols="55"/>
+        </md-input-group>
       </div>
     </form>
     <div>Description Preview (<a href="http://daringfireball.net/projects/markdown/" target="_blank">markdown</a>)</div>
     <md ng-model="spell.description"></md>
-  </material-content>
+  </md-content>
 </div>

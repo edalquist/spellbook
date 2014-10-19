@@ -5,3 +5,10 @@
 .controlMarginFix {
 	margin: 0 20px 0 0px;
 }
+
+.spell-description {
+	font-size: 1.2em;
+}
+.spell-description p {
+	text-indent: 1em;
+}
