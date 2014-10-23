@@ -34,15 +34,15 @@
     <![endif]-->
 
     <div layout="vertical" layout-fill>
-      <md-toolbar class="md-theme-light" ng-controller="MenuCtrl">
+      <md-toolbar class="md-theme-light" ng-controller="MenuCtrl as menu">
         <div class="md-toolbar-tools">
           <h3>
             <span><a href="#/search">Spellbook</a></span>
           </h3>
           <div flex></div>
           <div>
-            <a ng-if="!auth.user" href="#" ng-click="auth.$login('google', { scope: 'email' })">Login</a>
-            <span ng-if="auth.user">Welcome {{ auth.user.displayName }}, <a href="#" ng-click="auth.$logout()">Logout</a></span>
+            <a ng-if="!menu.isAuthenticated()" href="#" ng-click="menu.login()">Login</a>
+            <span ng-if="menu.isAuthenticated()">Welcome {{ menu.getUser().displayName }}, <a href="#" ng-click="menu.logout()">Logout</a></span>
           </div>
         </div>
       </md-toolbar>
@@ -81,9 +81,10 @@
 
     <!-- build:js({src,.tmp}) scripts/main.js -->
     <script src="app/spellbook.js"></script>
+    <script src="components/firebase/firebase.service.js"></script>
+    <script src="components/menu/menu.controller.js"></script>
     <script src="app/search/search.controller.js"></script>
     <script src="app/edit/edit.controller.js"></script>
-    <script src="components/menu/menu.controller.js"></script>
 
     <!-- inject:partials -->
     <!-- angular templates will be automaticaly converted in js and inserted here -->

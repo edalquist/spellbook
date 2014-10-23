@@ -1,30 +1,29 @@
-<md-content layout="vertical">
-
+<md-content layout="vertical" ng-controller="SearchCtrl as search">
   <form style="padding: 20px;">
-  	<tf-float label="Search" value="search.text" class="long"> </tf-float>
+  	<tf-float label="Search" value="search.filter.text" class="long"> </tf-float>
   	<div layout="vertical" layout-sm="horizontal" layout-align="space-between">
         <div class="filterTitle">Level:</div>
-        <div flex="9" ng-repeat="level in levels">
-        	<md-checkbox ng-model="search.level[level]" aria-label="Level {{level}}"  class="controlMarginFix">{{level}}</md-checkbox>
+        <div flex="9" ng-repeat="level in search.levels()">
+        	<md-checkbox ng-model="search.filter.level[level]" aria-label="Level {{level}}"  class="controlMarginFix">{{level}}</md-checkbox>
         </div>
     </div>
     <div layout="vertical" layout-md="horizontal" layout-align="space-between">
         <div class="filterTitle">School:</div>
-        <div flex="9" ng-repeat="school in schools">
-        	<md-checkbox ng-model="search.school[school]" aria-label="{{school}}"  class="controlMarginFix">{{school}}</md-checkbox>
+        <div flex="9" ng-repeat="school in search.schools()">
+        	<md-checkbox ng-model="search.filter.school[school]" aria-label="{{school}}"  class="controlMarginFix">{{school}}</md-checkbox>
         </div>
         <div flex></div>
     </div>
     <div layout="vertical" layout-md="horizontal">
         <div class="filterTitle">Class:</div>
-        <div flex="9" ng-repeat="cls in classes">
-        	<md-checkbox ng-model="search.cls[cls]" aria-label="{{cls}}"  class="controlMarginFix" flex="9">{{cls}}</md-checkbox>
+        <div flex="9" ng-repeat="cls in search.classes()">
+        	<md-checkbox ng-model="search.filter.cls[cls]" aria-label="{{cls}}"  class="controlMarginFix" flex="9">{{cls}}</md-checkbox>
         </div>
         <div flex></div>
     </div>
     <div layout="vertical" layout-sm="horizontal">
         <div class="filterTitle">Conc:</div>
-        <md-radio-group ng-model="search.concentration" layout="horizontal">
+        <md-radio-group ng-model="search.filter.concentration" layout="horizontal">
         	<div flex="9">
 				    <md-radio-button ng-value="{{true}}" aria-label="Yes" class="controlMarginFix">
 				      Yes
@@ -45,7 +44,7 @@
     </div>
     <div layout="vertical" layout-sm="horizontal">
         <div class="filterTitle">Ritual:</div>
-        <md-radio-group ng-model="search.ritual" layout="horizontal">
+        <md-radio-group ng-model="search.filter.ritual" layout="horizontal">
         	<div flex="9">
 				    <md-radio-button ng-value="{{true}}" aria-label="Yes" class="controlMarginFix">
 				      Yes
@@ -66,9 +65,8 @@
     </div>
   </form>
 
-
   <md-list>
-  	<md-item ng-repeat="(key, value) in filterSpells(spells)">
+  	<md-item ng-repeat="(key, value) in search.getFilteredSpells()">
       <md-item-content>
         <div class="md-tile-left">
             <img ng-src="{{item.face}}" class="face" alt="{{item.who}}">
@@ -87,5 +85,5 @@
     </md-item>
 
   </md-list>
-  <div>{{ skippedSpells }} Spells Not Shown, use the filter options to find what you want</div>
+  <div>{{ search.skippedSpells }} Spells Not Shown, use the filter options to find what you want</div>
 </md-content>

@@ -1,9 +1,43 @@
-'use strict';
+(function () {
+
+  'use strict';
+
+  /**
+   * @class MenuCtrl
+   * @ngInject
+   */
+  function MenuCtrl (firebaseService) {
+    this.firebaseService_ = firebaseService;
+  };
+
+  MenuCtrl.prototype.isAuthenticated = function() {
+    return this.firebaseService_.isAuthenticated();
+  }
+
+  MenuCtrl.prototype.getUser = function() {
+    return this.firebaseService_.getUser();
+  }
+
+  MenuCtrl.prototype.login = function() {
+    this.firebaseService_.login();
+  }
+
+  MenuCtrl.prototype.logout = function() {
+    this.firebaseService_.logout();
+  }
+
+
+  angular
+    .module('spellbook')
+    .controller('MenuCtrl', MenuCtrl);
+
+})();
+
 
 
 // function CreateSpellDialogController($scope, $mdDialog) {
 //   $scope.cancel = function() {
-//   	$mdDialog.hide();
+//    $mdDialog.hide();
 //   };
 
 //   $scope.create = function() {
@@ -11,28 +45,14 @@
 //   };
 // }
 
-angular.module('spellbook')
-  .controller('MenuCtrl', ['$scope', '$firebaseSimpleLogin', '$mdDialog', '$location', function ($scope, $firebaseSimpleLogin, $mdDialog, $location) {
-    // TODO turn this into services & factories
-    var ref = new Firebase('https://amber-torch-9218.firebaseio.com');
-    var authClient = $firebaseSimpleLogin(ref);
-    $scope.auth = authClient;
 
-    $scope.$on('$firebaseSimpleLogin:login', function(event, user) {
-      // save the user's profile into Firebase so we can
-      // list users, use them in security rules, and show profiles
-      ref.child('users').child(user.uid).update(user);
-    });
-
-    // TODO need to reload data correctly after auth
 
     //  $scope.spellNamePrompt = function(ev) {
-	  //   $mdDialog.show({
-	  //     templateUrl: 'app/create/create_spell_dialog.tmpl.html',
-	  //     targetEvent: ev,
-	  //     controller: ['$scope', '$mdDialog', CreateSpellDialogController]
-	  //   }).then(function(spellName) {
-	  //   	$location.path('/edit/' + spellName);
-	  //   });
-	  // };
-  }]);
+    //   $mdDialog.show({
+    //     templateUrl: 'app/create/create_spell_dialog.tmpl.html',
+    //     targetEvent: ev,
+    //     controller: ['$scope', '$mdDialog', CreateSpellDialogController]
+    //   }).then(function(spellName) {
+    //    $location.path('/edit/' + spellName);
+    //   });
+    // };
